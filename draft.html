@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Big Ten–SEC Challenge Draft Simulator | CFB Challenge</title>
 <style>
   :root{
@@ -126,7 +127,6 @@
   .draft-order-list li.current-order .current-copy small{display:block;color:var(--muted);font-weight:500;margin-top:2px}
 
 </style>
-
 <style id="cfb-shared-theme">
 :root{
   --navy:#0d1b2a; --navy2:#163d87; --blue:#1d4ed8; --red:#b91c1c;
@@ -159,8 +159,6 @@ header:not(.cfb-site-header) h1,.hero h1{letter-spacing:-.025em}
 .result-panel{background:#f2f7ff;border-color:#bfd0ee}
 @media(max-width:650px){.cfb-nav-links a:not(.cfb-nav-cta){display:none}}
 </style>
-
-
 <style id="cfb-cross-page-links">
 .cfb-page-links{
   margin:24px 0 0;
@@ -203,143 +201,124 @@ header:not(.cfb-site-header) h1,.hero h1{letter-spacing:-.025em}
 }
 </style>
 
-</head>
+<meta content="five-page-linked-package-2026-07-24" name="cfb-site-build"/></head>
 <body>
-
-<header class="cfb-site-header">
-  <nav class="cfb-nav" aria-label="Primary navigation">
-    <a class="cfb-brand" href="/cfbchallenge/">CFB <span>CHALLENGE</span></a>
-    <div class="cfb-nav-links">
-      <a href="/cfbchallenge/draft-explainer.html">Behind the Draft</a>
-      <a class="cfb-nav-cta" href="/cfbchallenge/draft.html">Draft Simulator</a>
-      <a href="/cfbchallenge/results.html">Results</a>
-    </div>
-  </nav>
+<header class="site-header cfb-site-header">
+<nav aria-label="Primary navigation" class="nav cfb-nav">
+<a aria-label="CFB Challenge home" class="brand cfb-brand" href="index.html">CFB <span>CHALLENGE</span></a>
+<div class="nav-links cfb-nav-links">
+<a href="proposal.html">Full Proposal</a>
+<a href="draft-explainer.html">Behind the Draft</a>
+<a class="nav-cta cfb-nav-cta" href="draft.html">Draft Simulator</a>
+<a href="results.html">Results</a>
+</div>
+</nav>
 </header>
-
 <header>
-  <h1>Big Ten–SEC Challenge Draft Simulator</h1>
-  <p>Choose a commissioner seat, name the Standard Bearers, build the Big Ten–SEC Challenge, then play Challenge Weekend.</p>
+<h1>Big Ten–SEC Challenge Draft Simulator</h1>
+<p>Choose a commissioner seat, name the Standard Bearers, build the Big Ten–SEC Challenge, then play Challenge Weekend.</p>
 </header>
-
 <div class="shell">
-  <main class="main">
-    <section class="standard-copy">
-      <h2>SEC/B1G Commissioners' Classic</h2>
-      <p>
+<main class="main">
+<section class="standard-copy">
+<h2>SEC/B1G Commissioners' Classic</h2>
+<p>
         Before the draft begins, each conference names one Standard Bearer for the
         SEC/B1G Commissioners' Classic—the showcase finale of Challenge Weekend.
         If the Challenge finishes 8–8, the winner of this matchup is awarded the
         Challenge Championship as the official tiebreaker.
       </p>
-    </section>
-
-
-    <section class="mode-panel">
-      <span class="mode-label">Commissioner Control</span>
-      <div class="mode-toggle" role="radiogroup" aria-label="Choose which conference to draft as">
-        <label><input type="radio" name="draftMode" value="B10" checked><span>Draft as Big Ten</span></label>
-        <label><input type="radio" name="draftMode" value="SEC"><span>Draft as SEC</span></label>
-        <label><input type="radio" name="draftMode" value="BOTH"><span>Draft as Both</span></label>
-      </div>
-      <small id="modeHelp">You control Big Ten home picks. The computer controls SEC home picks.</small>
-    </section>
-
-
-    <section class="philosophy-panel">
-      <div class="philosophy-heading">
-        <div>
-          <span class="mode-label">Commissioner Philosophy</span>
-          <strong id="philosophyName">Balanced Commissioner</strong>
-        </div>
-        <span id="philosophyValue">55% TV</span>
-      </div>
-      <input id="philosophySlider" type="range" min="0" max="100" value="55" step="1"
-        aria-label="Commissioner philosophy from easy wins to biggest and best games">
-      <div class="philosophy-ends">
-        <span><b>Game Theory</b><small>Easy wins</small></span>
-        <span><b>Biggest &amp; Best</b><small>TV blockbusters</small></span>
-      </div>
-      <small id="philosophyHelp">Balances conference win probability with marquee, competitive television matchups.</small>
-    </section>
-
-    <section class="setup">
-      <div>
-        <label>Big Ten Standard Bearer</label>
-        <select id="b10Champ"></select>
-        <div id="b10AutoChoice" class="computer-choice" style="display:none">Computer selects after you start</div>
-      </div>
-      <div>
-        <label>SEC Standard Bearer</label>
-        <select id="secChamp" style="display:none"></select>
-        <div id="secAutoChoice" class="computer-choice">Computer selects after you start</div>
-      </div>
-      <button id="startBtn" class="primary">Start Draft</button>
-    </section>
-
-    <div id="status" class="status">Choose the draft mode and Standard Bearer selection, then begin.</div>
-
-    <section class="matchup">
-      <div class="slot">
-        <small>Home Team</small>
-        <strong id="homeSlot">—</strong>
-      </div>
-      <div class="versus">VS</div>
-      <div class="slot">
-        <small>Away Team</small>
-        <strong id="awaySlot">—</strong>
-      </div>
-    </section>
-
-    <div id="lineBox" class="linebox"></div>
-
-    <section class="teams">
-      <div class="conf b10">
-        <h2>Big Ten</h2>
-        <div id="b10Grid" class="team-grid"></div>
-      </div>
-      <div class="conf sec">
-        <h2>SEC</h2>
-        <div id="secGrid" class="team-grid"></div>
-      </div>
-    </section>
-  
+</section>
+<section class="mode-panel">
+<span class="mode-label">Commissioner Control</span>
+<div aria-label="Choose which conference to draft as" class="mode-toggle" role="radiogroup">
+<label><input checked="" name="draftMode" type="radio" value="B10"/><span>Draft as Big Ten</span></label>
+<label><input name="draftMode" type="radio" value="SEC"/><span>Draft as SEC</span></label>
+<label><input name="draftMode" type="radio" value="BOTH"/><span>Draft as Both</span></label>
+</div>
+<small id="modeHelp">You control Big Ten home picks. The computer controls SEC home picks.</small>
+</section>
+<section class="philosophy-panel">
+<div class="philosophy-heading">
+<div>
+<span class="mode-label">Commissioner Philosophy</span>
+<strong id="philosophyName">Balanced Commissioner</strong>
+</div>
+<span id="philosophyValue">55% TV</span>
+</div>
+<input aria-label="Commissioner philosophy from easy wins to biggest and best games" id="philosophySlider" max="100" min="0" step="1" type="range" value="55"/>
+<div class="philosophy-ends">
+<span><b>Game Theory</b><small>Easy wins</small></span>
+<span><b>Biggest &amp; Best</b><small>TV blockbusters</small></span>
+</div>
+<small id="philosophyHelp">Balances conference win probability with marquee, competitive television matchups.</small>
+</section>
+<section class="setup">
+<div>
+<label>Big Ten Standard Bearer</label>
+<select id="b10Champ"></select>
+<div class="computer-choice" id="b10AutoChoice" style="display:none">Computer selects after you start</div>
+</div>
+<div>
+<label>SEC Standard Bearer</label>
+<select id="secChamp" style="display:none"></select>
+<div class="computer-choice" id="secAutoChoice">Computer selects after you start</div>
+</div>
+<button class="primary" id="startBtn">Start Draft</button>
+</section>
+<div class="status" id="status">Choose the draft mode and Standard Bearer selection, then begin.</div>
+<section class="matchup">
+<div class="slot">
+<small>Home Team</small>
+<strong id="homeSlot">—</strong>
+</div>
+<div class="versus">VS</div>
+<div class="slot">
+<small>Away Team</small>
+<strong id="awaySlot">—</strong>
+</div>
+</section>
+<div class="linebox" id="lineBox"></div>
+<section class="teams">
+<div class="conf b10">
+<h2>Big Ten</h2>
+<div class="team-grid" id="b10Grid"></div>
+</div>
+<div class="conf sec">
+<h2>SEC</h2>
+<div class="team-grid" id="secGrid"></div>
+</div>
+</section>
 <div class="cfb-page-links">
-  <h3>Why does the draft work this way?</h3>
-  <p>See how the Big Ten–SEC Challenge Draft, Challenge Weekend and the SEC/B1G Commissioners' Classic fit into the larger CFB Challenge.</p>
-  <div class="cfb-page-link-row">
-    <a class="cfb-page-link" href="/cfbchallenge/draft-explainer.html">Behind the Draft</a>
-    <a class="cfb-page-link alt" href="/cfbchallenge/results.html">View Results Page</a>
-  </div>
+<h3>See how the simulator fits into the full idea</h3>
+<p>Read the proposal, learn why the Challenge Draft is a major spring event, or preview the Challenge Weekend results experience.</p>
+<div class="cfb-page-link-row">
+<a class="cfb-page-link" href="draft-explainer.html">Behind the Draft</a>
+<a class="cfb-page-link alt" href="proposal.html">Read the Full Proposal</a>
+<a class="cfb-page-link alt" href="results.html">View Results</a>
 </div>
-
+</div>
 </main>
-
-  <aside class="sidebar">
-    <div class="champion-card">
-      <b>SEC/B1G Commissioners' Classic</b>
-      <div id="championGame">Not selected</div>
-      <small>The Big Ten Standard Bearer hosts in this version, giving each conference eight home games across 16 total games.</small>
-    </div>
-
-
-    <div class="draft-order-card">
-      <h3>Draft Order</h3>
-      <small>Each conference drafts its own home teams. The SEC receives consecutive picks at 8 and 9.</small>
-      <ol id="draftOrderList" class="draft-order-list"></ol>
-    </div>
-
-    <div class="metrics">
-      <div class="metric"><span>Current Pick</span><strong id="pickMetric">—</strong></div>
-      <div class="metric"><span>Drafted Games</span><strong id="gamesMetric">0/15</strong></div>
-          </div>
-<button id="simBtn" class="sim" disabled>Go to Challenge Simulation</button>
-    <button id="resetBtn" class="secondary" style="width:100%;margin-top:8px">Reset</button>
-
-    <div id="results"></div>
-  </aside>
+<aside class="sidebar">
+<div class="champion-card">
+<b>SEC/B1G Commissioners' Classic</b>
+<div id="championGame">Not selected</div>
+<small>The Big Ten Standard Bearer hosts in this version, giving each conference eight home games across 16 total games.</small>
 </div>
-
+<div class="draft-order-card">
+<h3>Draft Order</h3>
+<small>Each conference drafts its own home teams. The SEC receives consecutive picks at 8 and 9.</small>
+<ol class="draft-order-list" id="draftOrderList"></ol>
+</div>
+<div class="metrics">
+<div class="metric"><span>Current Pick</span><strong id="pickMetric">—</strong></div>
+<div class="metric"><span>Drafted Games</span><strong id="gamesMetric">0/15</strong></div>
+</div>
+<button class="sim" disabled="" id="simBtn">Go to Challenge Simulation</button>
+<button class="secondary" id="resetBtn" style="width:100%;margin-top:8px">Reset</button>
+<div id="results"></div>
+</aside>
+</div>
 <script>
 const HFA = 2.5;
 const SD = 16.0;

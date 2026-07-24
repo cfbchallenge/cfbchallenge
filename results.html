@@ -1,9 +1,10 @@
 <!-- TODO: challengeGrade function not auto-located; manual thresholds requested applied conceptually. -->
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Big Ten–SEC Challenge Results | CFB Challenge</title>
 <style>
 :root{--bg:#f3f5f7;--card:#fff;--text:#17202a;--muted:#667085;--line:#d8dee6;--b10:#174ea6;--sec:#8b1e1e}
@@ -85,7 +86,6 @@ button,a.button{border:0;border-radius:10px;padding:12px 16px;font-weight:700;cu
   }
 
 </style>
-
 <style id="cfb-shared-theme">
 :root{
   --navy:#0d1b2a; --navy2:#163d87; --blue:#1d4ed8; --red:#b91c1c;
@@ -118,8 +118,6 @@ header:not(.cfb-site-header) h1,.hero h1{letter-spacing:-.025em}
 .result-panel{background:#f2f7ff;border-color:#bfd0ee}
 @media(max-width:650px){.cfb-nav-links a:not(.cfb-nav-cta){display:none}}
 </style>
-
-
 <style id="cfb-cross-page-links">
 .cfb-page-links{
   margin:24px 0 0;
@@ -161,8 +159,6 @@ header:not(.cfb-site-header) h1,.hero h1{letter-spacing:-.025em}
   border:1px solid var(--line,#d9e0e8);
 }
 </style>
-
-
 <style id="cfb-results-grade-colors">
 .challenge-recap .recap-grade{
   background:#1d4ed8;
@@ -196,63 +192,55 @@ header:not(.cfb-site-header) h1,.hero h1{letter-spacing:-.025em}
 }
 </style>
 
-</head>
+<meta content="five-page-linked-package-2026-07-24" name="cfb-site-build"/></head>
 <body>
-
-<header class="cfb-site-header">
-  <nav class="cfb-nav" aria-label="Primary navigation">
-    <a class="cfb-brand" href="/cfbchallenge/">CFB <span>CHALLENGE</span></a>
-    <div class="cfb-nav-links">
-      <a href="/cfbchallenge/draft-explainer.html">Behind the Draft</a>
-      <a class="cfb-nav-cta" href="/cfbchallenge/draft.html">Draft Again</a>
-      <a href="/cfbchallenge/results.html">Results</a>
-    </div>
-  </nav>
-</header>
-
-<main class="container">
-  <section class="hero">
-    <h1>Big Ten–SEC Challenge Simulation</h1>
-    <p>The Big Ten–SEC Challenge Draft created the matchups. Now Challenge Weekend determines the Challenge Champion.</p>
-  </section>
-
-  <section class="card">
-    <div class="actions">
-      <a class="button secondary" href="draft.html">Draft Again</a>
-    </div>
-    <div id="status" class="status">Pregame grades are based on the completed draft. Simulate Challenge Weekend to reveal the results.</div>
-    <div id="winner" class="winner" style="display:none"></div>
-  </section>
-
-  <section class="card verdict-card">
-    <div id="commissionerReports">
-      <div class="report-placeholder">Building the Challenge recap…</div>
-    </div>
-  </section>
-
-  <section class="card">
-    <div class="actions">
-      <button id="simulateButton" class="primary" type="button">Simulate Challenge Weekend</button>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>Game Results</h2>
-    <div id="games">Playing the Challenge…</div>
-  </section>
-
-<div class="cfb-page-links">
-  <h3>Want to understand the strategy behind the result?</h3>
-  <p>Learn how the draft creates Challenge Weekend, why the Commissioners' Classic matters and how each matchup fits the CFB Challenge.</p>
-  <div class="cfb-page-link-row">
-    <a class="cfb-page-link" href="/cfbchallenge/draft-explainer.html">Behind the Draft</a>
-    <a class="cfb-page-link alt" href="/cfbchallenge/draft.html">Draft Again</a>
-    <a class="cfb-page-link alt" href="cfb-challenge-proposal.html">See the Full CFB Challenge Proposal</a>
-  </div>
+<header class="site-header cfb-site-header">
+<nav aria-label="Primary navigation" class="nav cfb-nav">
+<a aria-label="CFB Challenge home" class="brand cfb-brand" href="index.html">CFB <span>CHALLENGE</span></a>
+<div class="nav-links cfb-nav-links">
+<a href="proposal.html">Full Proposal</a>
+<a href="draft-explainer.html">Behind the Draft</a>
+<a class="nav-cta cfb-nav-cta" href="draft.html">Draft Simulator</a>
+<a href="results.html">Results</a>
 </div>
-
+</nav>
+</header>
+<main class="container">
+<section class="hero">
+<h1>Big Ten–SEC Challenge Simulation</h1>
+<p>The Big Ten–SEC Challenge Draft created the matchups. Now Challenge Weekend determines the Challenge Champion.</p>
+</section>
+<section class="card">
+<div class="actions">
+<a class="button secondary" href="draft.html">Draft Again</a>
+</div>
+<div class="status" id="status">Pregame grades are based on the completed draft. Simulate Challenge Weekend to reveal the results.</div>
+<div class="winner" id="winner" style="display:none"></div>
+</section>
+<section class="card verdict-card">
+<div id="commissionerReports">
+<div class="report-placeholder">Building the Challenge recap…</div>
+</div>
+</section>
+<section class="card">
+<div class="actions">
+<button class="primary" id="simulateButton" type="button">Simulate Challenge Weekend</button>
+</div>
+</section>
+<section class="card">
+<h2>Game Results</h2>
+<div id="games">Playing the Challenge…</div>
+</section>
+<div class="cfb-page-links">
+<h3>Go deeper into the CFB Challenge</h3>
+<p>Build another slate, learn the strategy behind the draft, or see how Challenge Weekend connects to the complete scheduling and playoff proposal.</p>
+<div class="cfb-page-link-row">
+<a class="cfb-page-link" href="draft.html">Draft Again</a>
+<a class="cfb-page-link alt" href="draft-explainer.html">Behind the Draft</a>
+<a class="cfb-page-link alt" href="proposal.html">Read the Full Proposal</a>
+</div>
+</div>
 </main>
-
 <script>
 const params=new URLSearchParams(window.location.search);
 const encoded=params.get("draft");
