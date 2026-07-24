@@ -68,15 +68,21 @@
     flex:0 0 auto;
     line-height:0;
   }
+  .site-header .nav,.site-header .cfb-nav,.cfb-site-header .nav,.cfb-site-header .cfb-nav{
+    min-height:124px;
+  }
   .cfb-nav-logo{
     display:block;
     width:auto;
-    height:60px;
-    max-width:68px;
+    height:112px;
+    max-width:124px;
     object-fit:contain;
   }
   @media(max-width:650px){
-    .cfb-nav-logo{height:52px;max-width:59px}
+    .site-header .nav,.site-header .cfb-nav,.cfb-site-header .nav,.cfb-site-header .cfb-nav{
+      min-height:94px;
+    }
+    .cfb-nav-logo{height:84px;max-width:94px}
   }
 </style>
 </head>

@@ -20,7 +20,9 @@
   .main,.sidebar{background:var(--panel);border:1px solid var(--line);border-radius:14px}
   .main{padding:18px}
   .sidebar{padding:16px;position:sticky;top:12px;align-self:start;max-height:calc(100vh - 24px);overflow:auto}
-  .setup{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;margin-bottom:10px}
+  .setup{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:end;margin-bottom:10px}
+  .setup>div{min-width:0}
+  .setup>#startBtn{grid-column:1/-1;justify-self:center;min-width:230px;padding:12px 22px;font-size:17px}
   .standard-copy{background:#fff7d6;border:1px solid #e5c75f;border-radius:12px;padding:14px;margin-bottom:14px}
   .standard-copy h2{margin:0 0 6px;font-size:20px}
   .standard-copy p{margin:0;color:#4b5563;line-height:1.4}
@@ -80,6 +82,7 @@
   }
   @media(max-width:620px){
     .setup{grid-template-columns:1fr}
+    .setup>#startBtn{grid-column:auto;width:100%;justify-self:stretch}
     .matchup{grid-template-columns:1fr}
     .versus{padding:0}
     .teams{grid-template-columns:1fr}
@@ -209,15 +212,21 @@ header:not(.cfb-site-header) h1,.hero h1{letter-spacing:-.025em}
     flex:0 0 auto;
     line-height:0;
   }
+  .site-header .nav,.site-header .cfb-nav,.cfb-site-header .nav,.cfb-site-header .cfb-nav{
+    min-height:124px;
+  }
   .cfb-nav-logo{
     display:block;
     width:auto;
-    height:60px;
-    max-width:68px;
+    height:112px;
+    max-width:124px;
     object-fit:contain;
   }
   @media(max-width:650px){
-    .cfb-nav-logo{height:52px;max-width:59px}
+    .site-header .nav,.site-header .cfb-nav,.cfb-site-header .nav,.cfb-site-header .cfb-nav{
+      min-height:94px;
+    }
+    .cfb-nav-logo{height:84px;max-width:94px}
   }
 </style>
 </head>
@@ -285,7 +294,7 @@ header:not(.cfb-site-header) h1,.hero h1{letter-spacing:-.025em}
 </div>
 <button class="primary" id="startBtn">Start Draft</button>
 </section>
-<div class="status" id="status">Choose the draft mode and Standard Bearer selection, then begin.</div>
+<div class="status" id="status">Choose the draft mode and select your Standard Bearer, then begin.</div>
 <section class="matchup">
 <div class="slot">
 <small>Home Team</small>
@@ -370,7 +379,7 @@ const sec = [
 const order = ["B10","SEC","B10","SEC","B10","SEC","B10","SEC","SEC","B10","SEC","B10","SEC","B10","SEC"];
 
 let usedB10 = new Set(), usedSEC = new Set();
-let games = [], pickIndex = 0, selectedHome = null, started = false, busy = false;
+let games = [], pickIndex = 0, selectedHome = null, started = false, busy = false, autoSimulating = false;
 let draftMode = "B10";
 let philosophy = 55;
 let champion = null;
@@ -392,7 +401,8 @@ function lineText(home,away){
   return margin>0 ? `${home.name} -${margin.toFixed(1)}` : `${away.name} -${Math.abs(margin).toFixed(1)}`;
 }
 function fillSelect(el,teams){
-  el.innerHTML = teams.map(t=>`<option value="${t.name}">${t.name}</option>`).join("");
+  el.innerHTML = `<option value="" disabled selected>Select your Standard Bearer</option>`+
+    teams.map(t=>`<option value="${t.name}">${t.name}</option>`).join("");
 }
 fillSelect($("b10Champ"),[...bigTen].sort((a,b)=>a.name.localeCompare(b.name)));
 fillSelect($("secChamp"),[...sec].sort((a,b)=>a.name.localeCompare(b.name)));
@@ -469,6 +479,44 @@ function opponentConf(conf){
 function confLabel(conf){
   return conf==="B10"?"Big Ten":"SEC";
 }
+function standardBearerSelectionsReady(){
+  if(draftMode==="B10") return Boolean($("b10Champ").value);
+  if(draftMode==="SEC") return Boolean($("secChamp").value);
+  return Boolean($("b10Champ").value && $("secChamp").value);
+}
+function updateMainAction(){
+  const button=$("startBtn");
+  if(champion && pickIndex>=order.length){
+    button.textContent="See the Results";
+    button.disabled=false;
+    return;
+  }
+  if(champion && started){
+    button.textContent=autoSimulating?"Simulating Draft…":"Simulate to End";
+    button.disabled=autoSimulating;
+    return;
+  }
+  button.textContent="Start Draft";
+  button.disabled=!standardBearerSelectionsReady();
+}
+function simulateToEnd(){
+  if(!champion || !started || pickIndex>=order.length) return;
+  autoSimulating=true;
+  selectedHome=null;
+  $("status").textContent="Simulating the remaining matchups for both commissioners…";
+  updateMainAction();
+  renderButtons();
+  if(!busy) advanceTurn();
+}
+function handleMainAction(){
+  if(champion && pickIndex>=order.length){
+    runSimulation();
+  }else if(champion && started){
+    simulateToEnd();
+  }else{
+    startDraft();
+  }
+}
 function updateModeHelp(){
   const text=draftMode==="B10"
     ? "You control the Big Ten Standard Bearer and Big Ten home picks. The computer controls the SEC."
@@ -484,6 +532,7 @@ function updateModeHelp(){
   $("b10AutoChoice").style.display=b10Human?"none":"block";
   $("secChamp").style.display=secHuman?"block":"none";
   $("secAutoChoice").style.display=secHuman?"none":"block";
+  updateMainAction();
 }
 
 function renderButtons(){
@@ -536,6 +585,14 @@ function chooseComputerStandardBearer(conf,opponent){
 
 function startDraft(){
   draftMode=document.querySelector('input[name="draftMode"]:checked').value;
+  if(!standardBearerSelectionsReady()){
+    $("status").textContent=draftMode==="BOTH"
+      ? "Select both Standard Bearers before starting the draft."
+      : `Select your ${confLabel(draftMode)} Standard Bearer before starting the draft.`;
+    updateMainAction();
+    return;
+  }
+
   resetState(false);
 
   let b,s;
@@ -556,13 +613,15 @@ function startDraft(){
   champion={b10:b,sec:s,home:b,away:s,p:homeWinProb(b,s)};
   usedB10.add(b.name); usedSEC.add(s.name);
   started=true;
+  autoSimulating=false;
   $("championGame").innerHTML=`<b>${s.name} at ${b.name}</b><br><small>${lineText(b,s)} · TV ${tvProduct(b,s).toFixed(0)}</small>`;
-  $("startBtn").disabled=true;
   $("philosophySlider").disabled=true;
   $("b10Champ").disabled=true;
   $("secChamp").disabled=true;
   document.querySelectorAll('input[name="draftMode"]').forEach(el=>el.disabled=true);
-  renderButtons(); advanceTurn();
+  updateMainAction();
+  renderButtons();
+  advanceTurn();
 }
 
 function advanceTurn(){
@@ -571,20 +630,27 @@ function advanceTurn(){
   updateSidebar();
   if(pickIndex>=order.length){
     started=false;
-    $("status").textContent="Draft complete. Continue to the full Challenge simulation.";
+    autoSimulating=false;
+    busy=false;
+    $("status").textContent="Draft complete. See the results and simulate Challenge Weekend.";
     $("simBtn").disabled=false;
+    updateMainAction();
     renderButtons();
     calculateChallengeOdds();
     return;
   }
 
   const conf=order[pickIndex];
-  if(isHumanTurn(conf)){
+  if(autoSimulating){
+    busy=false;
+    computerPick(conf,true);
+  }else if(isHumanTurn(conf)){
     busy=false;
     $("status").textContent=`Pick ${pickIndex+1}: ${confLabel(conf)} — choose your home team, then choose a ${confLabel(opponentConf(conf))} opponent.`;
+    updateMainAction();
     renderButtons();
   }else{
-    computerPick(conf);
+    computerPick(conf,false);
   }
 }
 
@@ -782,7 +848,7 @@ function computerCandidateScore(home,away,homeConf,homePool,awayPool){
   return {...base,total:Math.max(0,Math.min(110,total))};
 }
 
-function computerPick(homeConf){
+function computerPick(homeConf,fast=false){
   busy=true; renderButtons();
   const awayConf=opponentConf(homeConf);
   $("status").textContent=`Pick ${pickIndex+1}: ${confLabel(homeConf)} commissioner is matching its best available home teams against the strongest opponents they can realistically beat…`;
@@ -843,17 +909,17 @@ function computerPick(homeConf){
           <div class="grade-row"><span>TV ${best.grades.tv.toFixed(0)}</span>
           <span class="pick-grade ${previewGrade.cls}">${previewGrade.letter}</span></div>
           <div class="grade-note">Draft pick grade ${previewGrade.score.toFixed(0)}/100</div>`;
-        setTimeout(()=>lockGame(best.h,best.a,homeConf),2200);
-      },1300);
-    },800);
-  },1100);
+        setTimeout(()=>lockGame(best.h,best.a,homeConf,fast),fast?120:2200);
+      },fast?80:1300);
+    },fast?80:800);
+  },fast?80:1100);
 }
 function highlightButton(conf,name){
   const grid=conf==="B10"?$("b10Grid"):$("secGrid");
   [...grid.children].forEach(b=>{if(b.textContent===name)b.classList.add("selected","computer-flash")});
 }
 
-function lockGame(home,away,homeConf){
+function lockGame(home,away,homeConf,fast=false){
   const p=homeWinProb(home,away);
   const grade=draftPickGrade(home,away,homeConf);
   games.push({home,away,homeConf,p,line:lineText(home,away),grade});
@@ -867,7 +933,7 @@ function lockGame(home,away,homeConf){
     <div class="grade-note">Draft pick grade ${grade.score.toFixed(0)}/100</div>`;
   pickIndex++;
   busy=true; renderButtons(); updateSidebar();
-  setTimeout(()=>{busy=false;advanceTurn();},1800);
+  setTimeout(()=>{busy=false;advanceTurn();},fast?90:1800);
 }
 
 function updateSidebar(){
@@ -909,17 +975,22 @@ function runSimulation(){
 }
 
 function resetState(clearChamp=true){
-  usedB10=new Set();usedSEC=new Set();games=[];pickIndex=0;selectedHome=null;started=false;busy=false;champion=null;
+  usedB10=new Set();usedSEC=new Set();games=[];pickIndex=0;selectedHome=null;started=false;busy=false;autoSimulating=false;champion=null;
   $("homeSlot").textContent="—";$("awaySlot").textContent="—";$("lineBox").innerHTML="";
   $("results").innerHTML="";$("championGame").textContent="Not selected";
   $("pickMetric").textContent="—";$("gamesMetric").textContent="0/15";
-  $("status").textContent="Select both champions to begin.";
-  $("simBtn").disabled=true;$("startBtn").disabled=false;$("b10Champ").disabled=false;$("secChamp").disabled=false;
+  $("status").textContent="Choose the draft mode and select your Standard Bearer, then begin.";
+  $("simBtn").disabled=true;$("b10Champ").disabled=false;$("secChamp").disabled=false;
   document.querySelectorAll('input[name="draftMode"]').forEach(el=>el.disabled=false);
   $("philosophySlider").disabled=false;
   $("b10AutoChoice").textContent="Computer selects after you start";
   $("secAutoChoice").textContent="Computer selects after you start";
+  if(clearChamp){
+    $("b10Champ").value="";
+    $("secChamp").value="";
+  }
   updateModeHelp();
+  updateMainAction();
   renderButtons();
   renderDraftOrder();
 }
@@ -931,8 +1002,11 @@ document.querySelectorAll('input[name="draftMode"]').forEach(el=>{
     renderButtons();
   });
 });
+$("b10Champ").addEventListener("change",updateMainAction);
+$("secChamp").addEventListener("change",updateMainAction);
 updateModeHelp();
-$("startBtn").addEventListener("click",startDraft);
+updateMainAction();
+$("startBtn").addEventListener("click",handleMainAction);
 $("simBtn").addEventListener("click",runSimulation);
 $("resetBtn").addEventListener("click",()=>resetState());
 renderButtons();
