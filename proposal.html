@@ -562,11 +562,30 @@
   </style>
 <!-- Build: corrected-2026-07-24-v4 -->
 
-<meta content="five-page-linked-package-2026-07-24" name="cfb-site-build"/></head>
+<meta content="five-page-linked-package-2026-07-24" name="cfb-site-build"/>
+<style id="cfb-nav-logo-style">
+  .cfb-brand,.brand{
+    display:inline-flex;
+    align-items:center;
+    flex:0 0 auto;
+    line-height:0;
+  }
+  .cfb-nav-logo{
+    display:block;
+    width:auto;
+    height:60px;
+    max-width:68px;
+    object-fit:contain;
+  }
+  @media(max-width:650px){
+    .cfb-nav-logo{height:52px;max-width:59px}
+  }
+</style>
+</head>
 <body>
 <header class="site-header cfb-site-header">
 <nav aria-label="Primary navigation" class="nav cfb-nav">
-<a aria-label="CFB Challenge home" class="brand cfb-brand" href="index.html">CFB <span>CHALLENGE</span></a>
+<a aria-label="CFB Challenge home" class="brand cfb-brand" href="index.html"><img class="cfb-nav-logo" src="cfbchallenge-logo.png" alt="CFB Challenge"></a>
 <div class="nav-links cfb-nav-links">
 <a href="proposal.html">Full Proposal</a>
 <a href="draft-explainer.html">Behind the Draft</a>
