@@ -352,25 +352,25 @@ const HFA = 2.5;
 const SD = 16.0;
 const SIMS = 30000;
 
-// Ratings blend the prior model with small market-informed corrections and a modest one-point lift to the lower half of the Big Ten.
- // Matchup futures serve as guardrails, while conference-title odds mainly
- // reorder teams that were already close. Differences create projected spreads.
+// Team ratings = 80% current-season SP+ + 20% final prior-season SP+.
+ // Both source ratings are measured in points above an average FBS team.
+ // The blend feeds every spread, win probability, and draft evaluation.
 const bigTen = [
-  {name:"Ohio State",r:90.0},{name:"Oregon",r:86.5},{name:"Indiana",r:86.0},
-  {name:"USC",r:81.5},{name:"Michigan",r:81.0},{name:"Penn State",r:79.5},
-  {name:"Washington",r:78.5},{name:"Iowa",r:78.0},{name:"Illinois",r:72.0},
-  {name:"Nebraska",r:72.5},{name:"Minnesota",r:71.0},{name:"Wisconsin",r:70.0},
-  {name:"UCLA",r:69.5},{name:"Maryland",r:65.0},{name:"Northwestern",r:64.5},
-  {name:"Rutgers",r:61.0},{name:"Michigan State",r:60.5},{name:"Purdue",r:55.0}
+  {name:"Ohio State",r:29.62},{name:"Oregon",r:21.98},{name:"Indiana",r:27.84},
+  {name:"USC",r:14.9},{name:"Michigan",r:12.96},{name:"Penn State",r:11.3},
+  {name:"Washington",r:9.36},{name:"Iowa",r:14.34},{name:"Illinois",r:7.22},
+  {name:"Nebraska",r:14.76},{name:"Minnesota",r:2.62},{name:"Wisconsin",r:7.52},
+  {name:"UCLA",r:10.5},{name:"Maryland",r:-1.48},{name:"Northwestern",r:13.64},
+  {name:"Rutgers",r:-4.04},{name:"Michigan State",r:-1.64},{name:"Purdue",r:0.06}
 ];
 
 const sec = [
-  {name:"Texas",r:89.0},{name:"Georgia",r:85.5},{name:"Oklahoma",r:82.5},
-  {name:"Texas A&M",r:82.0},{name:"Ole Miss",r:81.5},{name:"LSU",r:81.5},
-  {name:"Alabama",r:80.5},{name:"Tennessee",r:77.5},{name:"Florida",r:76.0},
-  {name:"Missouri",r:73.5},{name:"Auburn",r:73.0},{name:"South Carolina",r:72.0},
-  {name:"Vanderbilt",r:69.5},{name:"Arkansas",r:66.5},
-  {name:"Mississippi State",r:64.6},{name:"Kentucky",r:63.5}
+  {name:"Texas",r:22.76},{name:"Georgia",r:27.46},{name:"Oklahoma",r:13.42},
+  {name:"Texas A&M",r:10.54},{name:"Ole Miss",r:17.52},{name:"LSU",r:19.42},
+  {name:"Alabama",r:21.36},{name:"Tennessee",r:16.36},{name:"Florida",r:9.5},
+  {name:"Missouri",r:17.28},{name:"Auburn",r:11.12},{name:"South Carolina",r:9.1},
+  {name:"Vanderbilt",r:5.02},{name:"Arkansas",r:-0.9},
+  {name:"Mississippi State",r:10.9},{name:"Kentucky",r:6.76}
 ];
 
 // 15 draft picks. Big Ten champion game is at home.
