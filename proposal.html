@@ -1,1005 +1,288 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Full CFB Challenge Proposal | CFB Challenge</title>
-<meta content="The complete CFB Challenge proposal: rebuilt nonconference scheduling, restored conference divisions, objective rankings, 17 automatic berths and a 24-team national championship." name="description"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full Proposal | CFB Challenge</title>
+<meta name="description" content="The complete CFB Challenge proposal: marquee nonconference games, conference divisions, objective rankings and a 24-team playoff.">
 <style>
-    :root{
-      --navy:#0d1b2a;
-      --navy2:#163d87;
-      --blue:#1d4ed8;
-      --red:#b91c1c;
-      --gold:#d6a84b;
-      --ink:#17202a;
-      --muted:#667085;
-      --line:#d9e0e8;
-      --paper:#ffffff;
-      --wash:#f3f6fa;
-      --soft:#f8fafc;
-      --soft-blue:#eef4ff;
-      --soft-gold:#fff7df;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:var(--wash);
-      color:var(--ink);
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.6;
-    }
-    a{color:inherit}
-    .site-header{
-      position:relative;
-      z-index:10;
-      background:var(--navy);
-      color:#fff;
-      border-bottom:4px solid var(--gold);
-    }
-    .nav{
-      width:min(1180px,calc(100% - 32px));
-      margin:0 auto;
-      min-height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-    .brand{
-      color:#fff;
-      text-decoration:none;
-      font-weight:900;
-      letter-spacing:.03em;
-      font-size:20px;
-      white-space:nowrap;
-    }
-    .brand span{color:var(--gold)}
-    .nav-links{
-      display:flex;
-      gap:20px;
-      align-items:center;
-      font-size:14px;
-      font-weight:800;
-    }
-    .nav-links a{color:#fff;text-decoration:none}
-    .nav-cta{
-      padding:10px 14px;
-      border-radius:9px;
-      background:#fff;
-      color:var(--navy)!important;
-    }
-    .hero{
-      padding:78px 0 72px;
-      color:#fff;
-      background:
-        linear-gradient(115deg,rgba(13,27,42,.98),rgba(22,61,135,.93)),
-        radial-gradient(circle at 80% 20%,rgba(214,168,75,.35),transparent 32%);
-    }
-    .hero-inner{
-      width:min(1180px,calc(100% - 32px));
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:minmax(0,1.45fr) minmax(285px,.55fr);
-      gap:48px;
-      align-items:center;
-    }
-    .eyebrow{
-      margin:0 0 16px;
-      color:#f4d68b;
-      font-size:13px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.11em;
-    }
-    h1{
-      margin:0 0 20px;
-      max-width:900px;
-      font-size:clamp(42px,5.7vw,68px);
-      line-height:1.03;
-      letter-spacing:-.035em;
-    }
-    .hero-copy{
-      margin:0;
-      max-width:830px;
-      color:#e8edf5;
-      font-size:18px;
-      line-height:1.58;
-    }
-    .hero-copy + .hero-copy{margin-top:14px}
-    .hero-copy strong{color:#fff}
-    .hero-stat{
-      padding:28px;
-      border:1px solid rgba(255,255,255,.23);
-      border-radius:18px;
-      background:rgba(255,255,255,.08);
-      backdrop-filter:blur(5px);
-    }
-    .hero-stat strong{
-      display:block;
-      font-size:62px;
-      line-height:1;
-    }
-    .hero-stat>span{
-      display:block;
-      margin:9px 0 20px;
-      color:#f4d68b;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-    .hero-points{
-      display:grid;
-      gap:9px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.18);
-      color:#e8edf5;
-      font-size:14px;
-      font-weight:700;
-    }
-    .hero-points div{display:flex;gap:9px;align-items:flex-start}
-    .hero-points div::before{content:"•";color:var(--gold);font-size:19px;line-height:1.1}
-    main{
-      width:min(1180px,calc(100% - 32px));
-      margin:0 auto;
-      padding:38px 0 70px;
-    }
-    .jump-nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap:9px;
-      margin:0 0 24px;
-      padding:18px;
-      background:var(--paper);
-      border:1px solid var(--line);
-      border-radius:16px;
-      box-shadow:0 4px 18px rgba(16,24,40,.04);
-    }
-    .jump-nav a{
-      display:inline-flex;
-      align-items:center;
-      min-height:38px;
-      padding:8px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:var(--soft);
-      color:var(--navy);
-      text-decoration:none;
-      font-size:13px;
-      font-weight:900;
-    }
-    .section{
-      margin-top:24px;
-      padding:38px;
-      background:var(--paper);
-      border:1px solid var(--line);
-      border-radius:20px;
-      box-shadow:0 4px 18px rgba(16,24,40,.04);
-      scroll-margin-top:24px;
-    }
-    .section-heading{
-      display:grid;
-      grid-template-columns:auto 1fr;
-      gap:18px;
-      align-items:start;
-      margin-bottom:24px;
-    }
-    .section-number{
-      display:grid;
-      place-items:center;
-      width:46px;
-      height:46px;
-      border-radius:13px;
-      background:var(--navy);
-      color:var(--gold);
-      font-size:17px;
-      font-weight:900;
-    }
-    .section-kicker{
-      margin:0 0 6px;
-      color:var(--blue);
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-    }
-    h2{
-      margin:0 0 8px;
-      font-size:31px;
-      line-height:1.16;
-      letter-spacing:-.02em;
-    }
-    .section-intro{
-      margin:0;
-      max-width:920px;
-      color:var(--muted);
-      font-size:17px;
-    }
-    .bullet-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:14px;
-    }
-    .bullet-grid.three{
-      grid-template-columns:repeat(3,minmax(0,1fr));
-    }
-    .bullet-card{
-      position:relative;
-      min-height:100%;
-      padding:20px 20px 20px 50px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:var(--soft);
-    }
-    .bullet-card::before{
-      content:"";
-      position:absolute;
-      left:20px;
-      top:25px;
-      width:11px;
-      height:11px;
-      border-radius:50%;
-      background:var(--gold);
-      box-shadow:0 0 0 4px rgba(214,168,75,.18);
-    }
-    .bullet-card strong{
-      display:block;
-      margin-bottom:5px;
-      font-size:18px;
-      line-height:1.3;
-    }
-    .bullet-card p{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.48;
-    }
-    .callout{
-      margin-top:18px;
-      padding:19px 21px;
-      border:1px solid #efdca7;
-      border-radius:14px;
-      background:var(--soft-gold);
-      font-weight:700;
-    }
-    .callout strong{color:var(--navy)}
-    .feature-section{
-      color:#fff;
-      border:0;
-      background:linear-gradient(135deg,var(--navy),var(--navy2));
-    }
-    .feature-section .section-number{
-      color:var(--navy);
-      background:var(--gold);
-    }
-    .feature-section .section-kicker{color:#f4d68b}
-    .feature-section .section-intro{color:#dfe7f3}
-    .feature-section .bullet-card{
-      border-color:rgba(255,255,255,.17);
-      background:rgba(255,255,255,.08);
-    }
-    .feature-section .bullet-card strong{color:#fff}
-    .feature-section .bullet-card p{color:#dfe7f3}
-    .feature-section .bullet-card::before{
-      background:#fff;
-      box-shadow:0 0 0 4px rgba(255,255,255,.14);
-    }
-    .feature-section .callout{
-      color:#fff;
-      border-color:rgba(214,168,75,.42);
-      background:rgba(214,168,75,.12);
-    }
-    .feature-section .callout strong{color:#f4d68b}
-    #field .bullet-card{
-      border-color:var(--line);
-      background:#fff;
-    }
-    #field .bullet-card strong{color:var(--navy)}
-    #field .bullet-card p{color:#4b5563}
-    #field .bullet-card::before{
-      background:var(--gold);
-      box-shadow:0 0 0 4px rgba(214,168,75,.18);
-    }
-    .button-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:24px;
-    }
-    .button{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:12px 18px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:900;
-    }
-    .button-primary{background:var(--gold);color:var(--navy)}
-    .button-secondary{background:#fff;color:var(--navy)}
-    .button-dark{background:var(--navy);color:#fff}
-    .button-light{background:var(--soft);color:var(--navy);border:1px solid var(--line)}
-    .allocation-grid{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:12px;
-      margin-top:22px;
-    }
-    .allocation-card{
-      padding:20px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:var(--soft-blue);
-    }
-    .allocation-card span{
-      display:block;
-      margin-bottom:6px;
-      color:var(--blue);
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-    .allocation-card strong{
-      display:block;
-      color:var(--navy);
-      font-size:28px;
-      line-height:1.1;
-    }
-    .allocation-card small{
-      display:block;
-      margin-top:8px;
-      color:#4b5563;
-      line-height:1.42;
-    }
-    .example-box{
-      margin-top:20px;
-      padding:24px;
-      border-left:5px solid var(--gold);
-      border-radius:0 14px 14px 0;
-      background:var(--soft-gold);
-    }
-    .example-box span{
-      display:block;
-      margin-bottom:6px;
-      color:var(--blue);
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-    .example-box strong{
-      display:block;
-      margin-bottom:8px;
-      color:var(--navy);
-      font-size:22px;
-      line-height:1.28;
-    }
-    .example-box p{margin:0;color:#4b5563}
-    .playin-graphic{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:16px;
-      margin-top:20px;
-    }
-    .playin-panel{
-      overflow:hidden;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:#fff;
-    }
-    .playin-panel-header{
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      align-items:center;
-      padding:17px 19px;
-      color:#fff;
-      background:var(--navy);
-    }
-    .playin-panel-header strong{
-      color:#fff;
-      font-size:18px;
-      line-height:1.2;
-    }
-    .playin-panel-header span{
-      color:#f4d68b;
-      font-size:12px;
-      font-weight:900;
-      text-align:right;
-      text-transform:uppercase;
-      letter-spacing:.05em;
-    }
-    .matchup-list{
-      display:grid;
-      gap:0;
-    }
-    .matchup-row{
-      display:grid;
-      grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr) 88px;
-      align-items:center;
-      min-height:64px;
-      border-top:1px solid var(--line);
-    }
-    .matchup-row:first-child{border-top:0}
-    .seed-team{
-      display:flex;
-      gap:9px;
-      align-items:center;
-      padding:12px 15px;
-      color:var(--navy);
-      font-weight:900;
-    }
-    .seed-badge{
-      display:grid;
-      place-items:center;
-      flex:0 0 30px;
-      width:30px;
-      height:30px;
-      border-radius:50%;
-      color:var(--navy);
-      background:var(--soft-gold);
-      border:1px solid #efdca7;
-      font-size:12px;
-    }
-    .versus{
-      color:var(--muted);
-      font-size:11px;
-      font-weight:900;
-      text-align:center;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-    .berth-tag{
-      align-self:stretch;
-      display:grid;
-      place-items:center;
-      padding:8px;
-      color:var(--blue);
-      background:var(--soft-blue);
-      border-left:1px solid var(--line);
-      font-size:11px;
-      font-weight:900;
-      text-align:center;
-      text-transform:uppercase;
-      letter-spacing:.05em;
-    }
-    .playin-note{
-      margin:14px 0 0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.5;
-    }
-    .postseason-flow{
-      display:grid;
-      gap:12px;
-      margin-top:22px;
-    }
-    .flow-row{
-      display:grid;
-      grid-template-columns:170px 1fr;
-      gap:20px;
-      align-items:center;
-      padding:18px 20px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:var(--soft);
-    }
-    .flow-row span{
-      color:var(--blue);
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-    .flow-row strong{
-      display:block;
-      font-size:18px;
-      line-height:1.3;
-    }
-    .flow-row p{margin:4px 0 0;color:var(--muted);font-size:14px}
-    .closing{
-      text-align:center;
-      padding:48px 34px;
-    }
-    .closing .section-heading{
-      display:block;
-      margin-bottom:22px;
-    }
-    .closing .section-number{margin:0 auto 17px}
-    .closing h2{
-      max-width:900px;
-      margin:0 auto 14px;
-      font-size:38px;
-    }
-    .closing .section-intro{
-      max-width:900px;
-      margin:0 auto;
-      font-size:18px;
-    }
-    .closing .button-row{justify-content:center}
-    footer{
-      padding:30px 16px;
-      background:var(--navy);
-      color:#cbd5e1;
-      text-align:center;
-      font-size:13px;
-    }
-    @media(max-width:980px){
-      .bullet-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .allocation-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .playin-graphic{grid-template-columns:1fr}
-    }
-    @media(max-width:900px){
-      .hero-inner{grid-template-columns:1fr}
-      .hero-stat{max-width:500px}
-    }
-    @media(max-width:720px){
-      .nav-links a:not(.nav-cta){display:none}
-      .hero{padding:58px 0 54px}
-      .hero-copy{font-size:17px}
-      main{padding-top:24px}
-      .section{padding:26px}
-      .bullet-grid,.bullet-grid.three{grid-template-columns:1fr}
-      .flow-row{grid-template-columns:1fr;gap:5px}
-      .matchup-row{grid-template-columns:1fr 34px 1fr}
-      .berth-tag{grid-column:1 / -1;min-height:34px;border-left:0;border-top:1px solid var(--line)}
-      .seed-team{padding:10px}
-      .closing h2{font-size:31px}
-    }
-    @media(max-width:520px){
-      .nav-links{gap:8px}
-      .nav-cta{padding:9px 10px;font-size:12px}
-      .section-heading{grid-template-columns:1fr;gap:12px}
-      .allocation-grid{grid-template-columns:1fr}
-      .jump-nav{padding:14px}
-      h2{font-size:27px}
-      .example-box strong{font-size:19px}
-    }
-  </style>
-<!-- Build: corrected-2026-07-24-v4 -->
-
-<meta content="five-page-linked-package-2026-07-24" name="cfb-site-build"/>
-<style id="cfb-nav-logo-style">
-  .cfb-brand,.brand{
-    display:inline-flex;
-    align-items:center;
-    flex:0 0 auto;
-    line-height:0;
-  }
-  .site-header .nav,.site-header .cfb-nav,.cfb-site-header .nav,.cfb-site-header .cfb-nav{
-    min-height:124px;
-  }
-  .cfb-nav-logo{
-    display:block;
-    width:auto;
-    height:112px;
-    max-width:124px;
-    object-fit:contain;
-  }
-  @media(max-width:650px){
-    .site-header .nav,.site-header .cfb-nav,.cfb-site-header .nav,.cfb-site-header .cfb-nav{
-      min-height:94px;
-    }
-    .cfb-nav-logo{height:84px;max-width:94px}
-  }
+:root {
+  --navy:#0d1b2a;
+  --blue:#163d87;
+  --gold:#d6a84b;
+  --ink:#17202a;
+  --muted:#596579;
+  --line:#dce3eb;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {margin:0;background:#f3f6fa;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+a {color:var(--blue)}
+.wrap {width:min(1100px,calc(100% - 36px));margin:auto}
+.cfb-site-header {background:var(--navy);border-bottom:4px solid var(--gold)}
+.cfb-nav {width:min(1180px,calc(100% - 32px));min-height:110px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.cfb-brand {display:flex;align-items:center;flex-shrink:0}
+.cfb-nav-logo {height:96px;width:auto;max-width:110px;object-fit:contain}
+.cfb-nav-links {display:flex;align-items:center;gap:clamp(9px,1.5vw,22px);flex-wrap:wrap}
+.cfb-nav-links a {font-size:13px;font-weight:800;color:white;text-decoration:none;white-space:nowrap}
+.cfb-nav-links a:hover {text-decoration:underline}
+.cfb-nav-links .cfb-nav-cta {padding:10px 12px;border-radius:9px;background:white;color:var(--navy)}
+.hero {padding:75px 0;background:linear-gradient(115deg,#0d1b2a,#163d87);color:white}
+.eyebrow {color:#f4d68b;text-transform:uppercase;letter-spacing:.12em;font-size:13px;font-weight:900}
+.hero h1 {font-size:clamp(40px,6vw,66px);line-height:1.07;letter-spacing:-.035em;margin:12px 0 20px}
+.hero p {max-width:850px;font-size:19px;color:#e4eaf5}
+.hero strong {color:#f4d68b}
+.stats {display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.stat {border:1px solid #ffffff44;background:#ffffff12;border-radius:13px;padding:20px}
+.stat strong {display:block;font-size:35px;color:#f4d68b}
+.stat span {font-size:14px;color:#e4eaf5}
+main {padding:35px 0 75px}
+.jump {display:flex;flex-wrap:wrap;gap:8px;margin-bottom:25px}
+.jump a {background:white;border:1px solid var(--line);border-radius:25px;padding:9px 13px;text-decoration:none;font-size:13px;font-weight:800}
+.section {background:white;border:1px solid var(--line);border-radius:18px;padding:clamp(24px,4vw,40px);margin-bottom:22px}
+.number {color:var(--blue);font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+.section h2 {font-size:clamp(26px,3.4vw,35px);line-height:1.2;color:var(--navy);margin:9px 0 15px}
+.section h3 {color:var(--navy);font-size:19px;margin:0 0 8px}
+.section p {color:#4b5563;margin:0 0 16px}
+.section p:last-child {margin-bottom:0}
+.grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}
+.card {padding:21px;background:#f8fafc;border:1px solid var(--line);border-radius:13px}
+.card p {font-size:15px;margin:0}
+.callout {background:#fff7df;border:1px solid #efdca7;border-radius:13px;padding:20px;margin:18px 0;font-weight:700;color:var(--navy)}
+.callout p {margin:0;color:var(--navy)}
+.highlight {background:linear-gradient(130deg,#0d1b2a,#163d87);color:white}
+.highlight h2,.highlight h3 {color:white}
+.highlight p {color:#e0e7f2}
+.highlight .number {color:#f4d68b}
+.highlight .card {background:#ffffff10;border-color:#ffffff30}
+.highlight .card p {color:#e0e7f2}
+.btn {display:inline-block;background:var(--gold);color:var(--navy);padding:12px 19px;border-radius:10px;text-decoration:none;font-weight:900;margin:5px 8px 5px 0}
+.btn.dark {background:var(--navy);color:white}
+.allocation {display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}
+.allocation div {background:#eef4ff;border:1px solid #d6e2f7;border-radius:13px;padding:19px}
+.allocation strong {display:block;font-size:30px;color:var(--navy)}
+.allocation span {font-size:13px;color:#4b5563}
+table {border-collapse:collapse;width:100%;margin:18px 0}
+th,td {border-bottom:1px solid var(--line);padding:12px;text-align:left;vertical-align:top}
+th {background:#eef4ff;color:var(--navy)}
+.timeline {display:grid;gap:9px;margin-top:20px}
+.week {display:grid;grid-template-columns:155px 1fr;gap:14px;padding:15px;border:1px solid var(--line);border-radius:12px;background:#f8fafc}
+.week>strong {color:var(--blue)}
+.week p {margin:3px 0 0;font-size:14px}
+footer {background:var(--navy);color:#cbd5e1;text-align:center;padding:28px 16px;font-size:13px}
+@media(max-width:760px) {
+  .grid,.stats {grid-template-columns:1fr}
+  .allocation {grid-template-columns:repeat(2,1fr)}
+  .week {grid-template-columns:1fr;gap:3px}
+  .cfb-nav {min-height:85px;gap:8px}
+  .cfb-nav-logo {height:70px;max-width:75px}
+  .cfb-nav-links {gap:8px;justify-content:flex-end}
+  .cfb-nav-links a {font-size:11px}
+  .cfb-nav-links .cfb-nav-cta {padding:7px 8px}
+}
+@media(max-width:420px) {
+  .cfb-nav-links a {font-size:10px}
+  .cfb-nav-links {gap:6px}
+}
 </style>
 </head>
 <body>
-<header class="site-header cfb-site-header">
-<nav aria-label="Primary navigation" class="nav cfb-nav">
-<a aria-label="CFB Challenge home" class="brand cfb-brand" href="index.html"><img class="cfb-nav-logo" src="cfbchallenge-logo.png" alt="CFB Challenge"></a>
-<div class="nav-links cfb-nav-links">
+
+<header class="cfb-site-header">
+<nav class="cfb-nav" aria-label="Primary navigation">
+<a class="cfb-brand" href="index.html" aria-label="CFB Challenge home">
+<img class="cfb-nav-logo" src="cfbchallenge-logo.png" alt="CFB Challenge">
+</a>
+<div class="cfb-nav-links">
 <a href="proposal.html">Full Proposal</a>
+<a href="rankings-explainer.html">Rankings Explainer</a>
 <a href="draft-explainer.html">Behind the Draft</a>
-<a class="nav-cta cfb-nav-cta" href="draft.html">Draft Simulator</a>
+<a class="cfb-nav-cta" href="draft.html">Draft Simulator</a>
 <a href="results.html">Results</a>
 </div>
 </nav>
 </header>
+
 <section class="hero">
-<div class="hero-inner">
-<div>
-<p class="eyebrow">A new way forward for college football's schedule</p>
-<h1>The full CFB Challenge proposal</h1>
-<p class="hero-copy">
-          The BCS made nearly every Saturday feel consequential. The College Football Playoff brought more teams into the national-title race and created unforgettable postseason games. With a 24-team playoff now the framework, the challenge is no longer simply how many teams get in. It's how to keep September, October and November essential to the story.
-        </p>
-<p class="hero-copy">
-          The question is how to make a larger postseason strengthen the months that come before it—not turn the regular season into a long qualifying exhibition. <strong>The CFB Challenge is a complete overhaul of nonconference scheduling, conference structure without expansion, national rankings and a 24-team playoff in which 17 teams play their way in on the field.</strong>
-</p>
+<div class="wrap">
+<span class="eyebrow">The complete CFB Challenge proposal</span>
+<h1>Build a better regular season around a bigger playoff.</h1>
+<p>A 24-team College Football Playoff creates more championship opportunities. The CFB Challenge makes sure that expansion doesn't come at the expense of the games that make college football great.</p>
+<p><strong>More blockbuster matchups. More meaningful conference races. Objective rankings. A postseason earned on the field.</strong></p>
+<div class="stats">
+<div class="stat"><strong>24</strong><span>National playoff teams</span></div>
+<div class="stat"><strong>17</strong><span>Automatic qualification berths</span></div>
+<div class="stat"><strong>4</strong><span>National Challenge windows</span></div>
 </div>
-<aside aria-label="Proposal overview" class="hero-stat">
-<strong>17</strong>
-<span>Automatic berths earned on the field</span>
-<div class="hero-points">
-<div>Meaningful nonconference games without fatal scheduling risk</div>
-<div>Conference divisions that restore annual rivalries</div>
-<div>Public, results-based national rankings</div>
-<div>A 24-team championship with seven at-large places</div>
-</div>
-</aside>
 </div>
 </section>
-<main>
-<nav aria-label="Proposal sections" class="jump-nav">
-<a href="#problem">Why change</a>
-<a href="#schedule">Conference structure</a>
-<a href="#challenges">Challenge Drafts</a>
+
+<main class="wrap">
+<nav class="jump" aria-label="Proposal sections">
+<a href="#problem">The Problem</a>
+<a href="#structure">Conference Structure</a>
+<a href="#challenges">Challenges & Drafts</a>
 <a href="#rankings">Rankings</a>
-<a href="#field">17 automatic berths</a>
-<a href="#play-in">Play-In Weekend</a>
-<a href="#bracket">Bracket</a>
-<a href="#calendar">20-week calendar</a>
+<a href="#field">Playoff Field</a>
+<a href="#playin">Play-In Weekend</a>
+<a href="#bracket">National Bracket</a>
+<a href="#calendar">Calendar</a>
 </nav>
+
 <section class="section" id="problem">
-<div class="section-heading">
-<div class="section-number">01</div>
-<div>
-<p class="section-kicker">Why the sport needs a new system</p>
-<h2>Fix the incentives that are hollowing out the regular season</h2>
-<p class="section-intro">A 24-team playoff opens the door for more contenders, but it can also make individual losses feel less costly. The CFB Challenge counters that by attaching direct consequences to Challenge weekends, division races and objective seeding—so regular-season games still determine who qualifies, who hosts and who earns the easiest path.</p>
+<span class="number">01 — The problem</span>
+<h2>Fix the incentives that are hollowing out the regular season.</h2>
+<p>A 24-team playoff gives more programs a chance to compete for a championship. But a larger postseason also risks making individual regular-season games less consequential.</p>
+<p>Rather than simply expanding the playoff, college football should build a system that gives teams more reasons to win meaningful games throughout the year.</p>
+<div class="grid">
+<div class="card"><h3>Bring back marquee matchups</h3><p>Replace the incentive to avoid elite opponents with nationally coordinated nonconference showdowns.</p></div>
+<div class="card"><h3>Make losses survivable</h3><p>A competitive loss against an excellent team shouldn't be more damaging than avoiding that team entirely.</p></div>
+<div class="card"><h3>Restore conference rivalries</h3><p>Stable divisions create recognizable conference races and protect important annual games.</p></div>
+<div class="card"><h3>Earn playoff access</h3><p>Qualification games replace committee decisions for most of the national playoff field.</p></div>
 </div>
-</div>
-<div class="bullet-grid">
-<div class="bullet-card">
-<strong>Bring back marquee nonconference games</strong>
-<p>Those games are disappearing because the risk increasingly outweighs the reward. The Challenge replaces isolated scheduling gambles with blockbuster games carrying conference-wide value.</p>
-</div>
-<div class="bullet-card">
-<strong>A good loss no longer ends a season</strong>
-<p>Conference play determines whether a team can earn automatic access. Nonconference play determines how high that team can climb in the rankings and where it is seeded.</p>
-</div>
-<div class="bullet-card">
-<strong>Restore conference rivalries</strong>
-<p>Modern conferences are too large for every important matchup to be protected. Stable divisions make the games fans care about part of the annual schedule again.</p>
-</div>
-<div class="bullet-card">
-<strong>Make a playoff require playing in</strong>
-<p>College football calls it a playoff. Most teams should qualify by winning a game with a berth on the line—not by being selected in a private meeting room.</p>
-</div>
-</div>
+<div class="callout">The goal isn't simply more football. It's more football that matters.</div>
 </section>
-<section class="section" id="schedule">
-<div class="section-heading">
-<div class="section-number">02</div>
-<div>
-<p class="section-kicker">Conference structure and scheduling</p>
-<h2>Use divisions to create smaller conference races—without conference expansion</h2>
-<p class="section-intro">The CFB Challenge does not redraw the map or force another round of realignment. It organizes today's large conferences into divisions, restores repeat opponents and connects division standings directly to Play-In Weekend.</p>
+
+<section class="section" id="structure">
+<span class="number">02 — Conference structure</span>
+<h2>Restore divisions and create meaningful conference races.</h2>
+<p>The proposal does not require another round of realignment. Instead, each major conference is organized into two stable, geographically sensible divisions.</p>
+<div class="grid">
+<div class="card"><h3>Two divisions</h3><p>Smaller races create clearer standings, more familiar opponents and meaningful late-season competition.</p></div>
+<div class="card"><h3>Eight conference games</h3><p>Each major-conference team plays eight league games while preserving four nonconference dates.</p></div>
+<div class="card"><h3>Four nonconference opportunities</h3><p>Challenge weekends, Group of Six games and open dates fit into a coordinated national schedule.</p></div>
+<div class="card"><h3>Standings determine opportunity</h3><p>Division finishes establish Play-In Weekend pairings, with postseason qualification decided on the field.</p></div>
 </div>
-</div>
-<div class="bullet-grid">
-<div class="bullet-card">
-<strong>Two stable divisions</strong>
-<p>Each major conference is divided into two geographic groups, creating coherent races and a schedule fans can understand from year to year.</p>
-</div>
-<div class="bullet-card">
-<strong>Eight conference games</strong>
-<p>Teams play a consistent conference slate that preserves divisional rivals while leaving four dates for the rebuilt nonconference system.</p>
-</div>
-<div class="bullet-card">
-<strong>Four nonconference games</strong>
-<p>Open dates, Challenge games and Group of Six matchups fit into a common national structure instead of being scattered randomly across the season.</p>
-</div>
-<div class="bullet-card">
-<strong>Standings lead somewhere</strong>
-<p>Division finish determines each team's Play-In pairing, so conference games decide postseason opportunity without a single conference championship rematch.</p>
-</div>
-</div>
-<div class="callout"><strong>The regular season has two connected jobs:</strong> conference play earns access; nonconference play establishes national strength, ranking ceiling and home-field advantage.</div>
+<p><strong>Conference play earns access. Nonconference play helps determine national ranking, seeding and home-field advantage.</strong></p>
 </section>
-<section class="section feature-section" id="challenges">
-<div class="section-heading">
-<div class="section-number">03</div>
-<div>
-<p class="section-kicker">Conference Challenges and spring Draft Days</p>
-<h2>Turn the nonconference schedule into a season of national events</h2>
-<p class="section-intro">The Challenge Draft is the centerpiece that can attract attention to the entire proposal: major spring television events create current matchups, then conference-wide Challenge weekends deliver blockbuster games with playoff berths attached.</p>
+
+<section class="section highlight" id="challenges">
+<span class="number">03 — Conference Challenges and Draft Days</span>
+<h2>Turn the nonconference schedule into a national event.</h2>
+<p>Instead of scheduling marquee games a decade in advance, commissioners build their Challenge slates each spring through live, televised drafts.</p>
+<div class="grid">
+<div class="card"><h3>Four spring draft events</h3><p>Conference matchups are revealed through major television events featuring coaches, returning stars and commissioner strategy.</p></div>
+<div class="card"><h3>Current teams, current matchups</h3><p>Spring selections produce games that reflect the teams fans will actually see that fall.</p></div>
+<div class="card"><h3>Standard Bearers</h3><p>Each conference designates a Standard Bearer. The Big Ten and SEC representatives meet in the featured Commissioners' Classic.</p></div>
+<div class="card"><h3>Conference-wide stakes</h3><p>Challenge results determine postseason berth allocations, giving every matchup consequences beyond the individual teams.</p></div>
 </div>
-</div>
-<div class="bullet-grid">
-<div class="bullet-card">
-<strong>Four nationally televised spring drafts</strong>
-<p>Shortly after spring practice, the participating conferences reveal their Challenge schedules through live events built as part selection show, part media day and part schedule release.</p>
-</div>
-<div class="bullet-card">
-<strong>Every school helps create the event</strong>
-<p>Head coaches and returning stars attend, take the stage when matchups are announced and create immediate interviews, photos, reactions and months of debate.</p>
-</div>
-<div class="bullet-card">
-<strong>Matchups are built for the teams that exist now</strong>
-<p>Commissioners create the slate in the spring instead of asking fans to care about games scheduled a decade before kickoff.</p>
-</div>
-<div class="bullet-card">
-<strong>Standard Bearers headline the weekend</strong>
-<p>Each conference names a Standard Bearer. In the Big Ten–SEC Challenge, those teams meet in the Labor Day night SEC/B1G Commissioners' Classic.</p>
-</div>
-<div class="bullet-card">
-<strong>Two annual flagship Challenges</strong>
-<p>The Big Ten–SEC Challenge owns Labor Day weekend. The ACC–Big 12 Challenge follows one week later, giving both conference pairings a yearly championship race.</p>
-</div>
-<div class="bullet-card">
-<strong>A rotating second round</strong>
-<p>In 2026, the Big Ten faces the Big 12 while the SEC faces the ACC. In 2027, the pairings switch to Big Ten–ACC and SEC–Big 12.</p>
-</div>
-<div class="bullet-card">
-<strong>The lower conferences can steal a berth</strong>
-<p>The ACC or Big 12 earns an additional guaranteed playoff place by winning its rotating Challenge against the Big Ten or SEC, 9–7 or better.</p>
-</div>
-<div class="bullet-card">
-<strong>Every game belongs to one scoreboard</strong>
-<p>A middle-of-the-pack road upset counts beside the prime-time showcase. Conference bragging rights and postseason access are decided across the full slate.</p>
-</div>
-</div>
-<div class="callout"><strong>Imagine the finish:</strong> the Big Ten leads the Big Ten–SEC Challenge 8–7 with only the 16th game remaining: Georgia at Ohio State in the Standard Bearer matchup. It is winner-take-all. An Ohio State win delivers the Big Ten a 9–7 Challenge victory. A Georgia win makes it 8–8 and gives the SEC the Challenge through the Standard Bearer tiebreaker. Conference bragging rights, the likely No. 1 ranking and the larger guaranteed playoff allotment all come down to Labor Day night.</div>
-<div class="button-row">
-<a class="button button-primary" href="draft-explainer.html">See How the Draft Works</a>
-<a class="button button-secondary" href="draft.html">Try the Draft Simulator</a>
-</div>
+<h3>The flagship events</h3>
+<p>The Big Ten–SEC Challenge owns Labor Day weekend, featuring 16 head-to-head games. If the conferences split 8–8, the Commissioners' Classic determines the Challenge winner.</p>
+<p>The ACC–Big 12 Challenge follows in Week 3, with additional rotating cross-conference Challenges in Week 4.</p>
+<p>The rotating matchups can also shift postseason berths. An ACC or Big 12 conference that wins at least 9–7 against its Big Ten or SEC opponent can take one of that conference's allocated berths.</p>
+<a class="btn" href="draft-explainer.html">Behind the Draft</a>
+<a class="btn" href="draft.html">Try the Draft Simulator</a>
 </section>
+
 <section class="section" id="rankings">
-<div class="section-heading">
-<div class="section-number">04</div>
-<div>
-<p class="section-kicker">Objective national rankings</p>
-<h2>Rank teams by who they beat, where they beat them and how they beat them</h2>
-<p class="section-intro">The rankings are not produced by subjective committee discussion behind closed doors. The method is published before the season, and the results play out in public on the field.</p>
+<span class="number">04 — Objective national rankings</span>
+<h2>Replace the committee with a season-long climb.</h2>
+<p>Instead of weekly subjective rankings, teams accumulate points throughout the season. Every performance contributes to a running total that determines playoff rankings and seeding.</p>
+<p>Past results are continuously reassessed as opponents win or lose. A victory over a team that develops into a contender becomes more valuable. A victory over a team that struggles can lose some of its original value.</p>
+<div class="grid">
+<div class="card"><h3>Winning</h3><p>Victories provide the foundation of the system. Beating elite opponents offers the largest rewards.</p></div>
+<div class="card"><h3>Game location</h3><p>Neutral-site (+0.25) and road (+0.50) location multipliers recognize the added difficulty of winning away from home.</p></div>
+<div class="card"><h3>Game control</h3><p>Using only the score throughout the game, the system recognizes dominant performances and competitive efforts, including some losses.</p></div>
+<div class="card"><h3>Strength of opponent</h3><p>The one element incorporating outside power ratings. Opponent strength changes the value of past performances as the season develops.</p></div>
 </div>
+<div class="callout">
+A five-point loss at Ohio State can be more impressive than a 28-point victory over Rutgers. Six competitive losses won't build a playoff résumé, but one extra loss from scheduling a great opponent shouldn't derail a season.
 </div>
-<div class="bullet-grid">
-<div class="bullet-card">
-<strong>Who did you beat?</strong>
-<p>Opponent quality is the foundation. Wins rise or fall in value as the teams on the schedule establish their own strength.</p>
-</div>
-<div class="bullet-card">
-<strong>Where did you beat them?</strong>
-<p>Road success carries more weight than winning the same game at home, giving difficult environments measurable value.</p>
-</div>
-<div class="bullet-card">
-<strong>How did you beat them?</strong>
-<p>The system distinguishes dominant, controlled performances from narrow escapes without allowing reputation alone to define quality.</p>
-</div>
-<div class="bullet-card">
-<strong>Conference play opens the door</strong>
-<p>A team can recover from a strong nonconference loss because its conference finish still controls the automatic path into Play-In Weekend.</p>
-</div>
-<div class="bullet-card">
-<strong>Nonconference play sets the ceiling</strong>
-<p>Challenge wins and ambitious road games determine whether a qualifier is ranked No. 1, earns a bye or hosts playoff games.</p>
-</div>
-<div class="bullet-card">
-<strong>Everything is visible</strong>
-<p>Weekly rankings move because of published results and known inputs—not because a committee changes its explanation from one week to the next.</p>
-</div>
-</div>
+<p>Winning remains the most valuable outcome. The goal is to make defeating a great opponent enormously rewarding while allowing teams to survive competitive losses against excellent competition.</p>
+<p>The exact formula would be finalized through testing, published in advance and applied equally to every team.</p>
+<a class="btn dark" href="rankings-explainer.html">Read the Rankings Explainer</a>
 </section>
-<section class="section feature-section" id="field">
-<div class="section-heading">
-<div class="section-number">05</div>
-<div>
-<p class="section-kicker">The 24-team championship field</p>
-<h2>Seventeen automatic berths. Seven at-large places.</h2>
-<p class="section-intro">Fourteen major-conference Play-In winners and three Group of Six winners claim automatic places. The remaining seven teams enter through the objective national rankings.</p>
+
+<section class="section" id="field">
+<span class="number">05 — The national championship field</span>
+<h2>24 teams. 17 automatic berths. Seven at-large places.</h2>
+<p>Most teams earn access by winning a postseason qualification game, not by being selected by a committee.</p>
+<div class="allocation">
+<div><strong>9</strong><span>Big Ten + SEC combined</span></div>
+<div><strong>5</strong><span>ACC + Big 12 combined</span></div>
+<div><strong>3</strong><span>Group of Six qualification winners</span></div>
+<div><strong>7</strong><span>At-large selections by objective rankings</span></div>
 </div>
+<div class="grid">
+<div class="card"><h3>Big Ten and SEC</h3><p>The Challenge winner receives five automatic Play-In berths; the losing conference receives four.</p></div>
+<div class="card"><h3>ACC and Big 12</h3><p>The Challenge winner receives three automatic Play-In berths; the losing conference receives two.</p></div>
+<div class="card"><h3>Group of Six</h3><p>Six conference champions play three qualification games, sending three winners into the national bracket.</p></div>
+<div class="card"><h3>Seven at-large places</h3><p>The objective national rankings fill the remaining positions and seed the complete 24-team field.</p></div>
 </div>
-<div class="allocation-grid">
-<div class="allocation-card">
-<span>Big Ten + SEC</span>
-<strong>9 berths</strong>
-<small>The annual Challenge winner earns five Play-In places; the other conference earns four.</small>
-</div>
-<div class="allocation-card">
-<span>ACC + Big 12</span>
-<strong>5 berths</strong>
-<small>The annual Challenge winner earns three Play-In places; the other conference earns two.</small>
-</div>
-<div class="allocation-card">
-<span>Group of Six</span>
-<strong>3 berths</strong>
-<small>Six conference champions meet in three Week 15 qualification games.</small>
-</div>
-<div class="allocation-card">
-<span>At-large field</span>
-<strong>7 berths</strong>
-<small>The objective rankings fill the remaining places and seed the complete bracket.</small>
-</div>
-</div>
-<div class="bullet-grid" style="margin-top:14px;">
-<div class="bullet-card">
-<strong>The total never changes</strong>
-<p>Nine plus five plus three equals 17 automatic berths every season. They are part of the field from the beginning—not late-added bonus bids.</p>
-</div>
-<div class="bullet-card">
-<strong>Two berths can be stolen</strong>
-<p>The rotating Challenges let the ACC or Big 12 take one berth from its Big Ten or SEC opponent by winning at least 9–7, shifting access without expanding the field.</p>
-</div>
-</div>
+<p>Rotating Challenges may transfer up to two berths between conferences without changing the total number of automatic qualifiers.</p>
+<div class="callout">Nine major berths plus five major berths plus three Group of Six berths equals 17 automatic qualifiers every year.</div>
 </section>
-<section class="section" id="play-in">
-<div class="section-heading">
-<div class="section-number">06</div>
-<div>
-<p class="section-kicker">CFB Challenge Play-In Weekend</p>
-<h2>Replace conference championship games with direct qualification games</h2>
-<p class="section-intro">Conference standings determine who plays, Challenge results determine how many berths each conference has, and every Play-In winner enters the national bracket.</p>
-</div>
-</div>
-<div class="bullet-grid">
-<div class="bullet-card">
-<strong>Berth allotment sets the depth</strong>
-<p>A conference with five berths sends the top five teams from each division into mirrored cross-division matchups. Four berths use the top four, three use the top three, and so on.</p>
-</div>
-<div class="bullet-card">
-<strong>Division finish creates the matchup</strong>
-<p>The highest finisher in one division faces the lowest qualifier from the other, rewarding the regular season without giving anyone a free pass into the field.</p>
-</div>
-<div class="bullet-card">
-<strong>November matters deeper into the standings</strong>
-<p>Teams in the bottom-middle of a division are still fighting to reach a Play-In position late in the season. Even a fifth-place team can earn a puncher's chance with one win.</p>
-</div>
-<div class="bullet-card">
-<strong>Every place in the division matters</strong>
-<p>Moving from fifth to fourth—or fourth to third—changes the opponent waiting in Week 15, keeping races meaningful even after first place is out of reach.</p>
-</div>
-<div class="bullet-card">
-<strong>Win and you are in</strong>
-<p>There is no committee interpretation attached to the result. Every major-conference Play-In winner claims one of the 14 automatic berths.</p>
-</div>
-<div class="bullet-card">
-<strong>Group of Six champions get the same chance</strong>
-<p>The six champions play three national qualification games in Week 15, with all three winners advancing to the 24-team playoff.</p>
-</div>
-</div>
-<div class="example-box">
-<span>Play-In example</span>
-<strong>If the Big Ten wins the Big Ten–SEC Challenge, it receives five automatic berths while the SEC receives four.</strong>
-<div aria-label="Big Ten and SEC Play-In matchup ladders" class="playin-graphic">
-<div class="playin-panel">
-<div class="playin-panel-header">
-<strong>Big Ten Play-In</strong>
-<span>5 games · 5 winners qualify</span>
-</div>
-<div class="matchup-list">
-<div class="matchup-row"><div class="seed-team"><span class="seed-badge">1</span>East</div><div class="versus">vs.</div><div class="seed-team"><span class="seed-badge">5</span>West</div><div class="berth-tag">Winner in</div></div>
-<div class="matchup-row"><div class="seed-team"><span class="seed-badge">2</span>East</div><div class="versus">vs.</div><div class="seed-team"><span class="seed-badge">4</span>West</div><div class="berth-tag">Winner in</div></div>
-<div class="matchup-row"><div class="seed-team"><span class="seed-badge">3</span>East</div><div class="versus">vs.</div><div class="seed-team"><span class="seed-badge">3</span>West</div><div class="berth-tag">Winner in</div></div>
-<div class="matchup-row"><div class="seed-team"><span class="seed-badge">4</span>East</div><div class="versus">vs.</div><div class="seed-team"><span class="seed-badge">2</span>West</div><div class="berth-tag">Winner in</div></div>
-<div class="matchup-row"><div class="seed-team"><span class="seed-badge">5</span>East</div><div class="versus">vs.</div><div class="seed-team"><span class="seed-badge">1</span>West</div><div class="berth-tag">Winner in</div></div>
-</div>
-</div>
-<div class="playin-panel">
-<div class="playin-panel-header">
-<strong>SEC Play-In</strong>
-<span>4 games · 4 winners qualify</span>
-</div>
-<div class="matchup-list">
-<div class="matchup-row"><div class="seed-team"><span class="seed-badge">1</span>East</div><div class="versus">vs.</div><div class="seed-team"><span class="seed-badge">4</span>West</div><div class="berth-tag">Winner in</div></div>
-<div class="matchup-row"><div class="seed-team"><span class="seed-badge">2</span>East</div><div class="versus">vs.</div><div class="seed-team"><span class="seed-badge">3</span>West</div><div class="berth-tag">Winner in</div></div>
-<div class="matchup-row"><div class="seed-team"><span class="seed-badge">3</span>East</div><div class="versus">vs.</div><div class="seed-team"><span class="seed-badge">2</span>West</div><div class="berth-tag">Winner in</div></div>
-<div class="matchup-row"><div class="seed-team"><span class="seed-badge">4</span>East</div><div class="versus">vs.</div><div class="seed-team"><span class="seed-badge">1</span>West</div><div class="berth-tag">Winner in</div></div>
-</div>
-</div>
-</div>
-<p class="playin-note">The mirrored ladder rewards the best division finish with the lowest available seed from the opposite side—but nobody qualifies without winning the Play-In game.</p>
-</div>
+
+<section class="section" id="playin">
+<span class="number">06 — Play-In Weekend</span>
+<h2>Replace conference championship games with direct qualification games.</h2>
+<p>In Week 15, major-conference teams compete in cross-division matchups. Each winner earns an automatic playoff berth.</p>
+<p>The number of available berths determines how deep into each division's standings the Play-In extends. A conference with five berths sends its top five teams from each division into five qualification games.</p>
+<p>The best finisher from one division faces the lowest qualifying finisher from the other. Higher division placement earns a more favorable matchup, but nobody qualifies without winning.</p>
+<h3>Example: Big Ten earns five berths; SEC earns four</h3>
+<table>
+<thead><tr><th>Big Ten Play-In</th><th>SEC Play-In</th></tr></thead>
+<tbody>
+<tr><td>East #1 vs. West #5</td><td>East #1 vs. West #4</td></tr>
+<tr><td>East #2 vs. West #4</td><td>East #2 vs. West #3</td></tr>
+<tr><td>East #3 vs. West #3</td><td>East #3 vs. West #2</td></tr>
+<tr><td>East #4 vs. West #2</td><td>East #4 vs. West #1</td></tr>
+<tr><td>East #5 vs. West #1</td><td>—</td></tr>
+</tbody>
+</table>
+<p>This makes every place in the division important. Moving from fifth to fourth, or fourth to third, changes the opponent waiting in Week 15.</p>
+<p>Meanwhile, the six Group of Six champions compete in three national qualification games. All three winners advance.</p>
+<div class="callout">Win your Play-In game, and you're in. No committee interpretation required.</div>
 </section>
+
 <section class="section" id="bracket">
-<div class="section-heading">
-<div class="section-number">07</div>
-<div>
-<p class="section-kicker">The national bracket</p>
-<h2>Reward the best regular seasons without removing the danger</h2>
-<p class="section-intro">The objective rankings seed all 24 teams. Top seeds receive meaningful advantages, but every national champion still has to survive a fixed path on the field.</p>
-</div>
-</div>
-<div class="bullet-grid three">
-<div class="bullet-card">
-<strong>Eight first-round byes</strong>
-<p>The top eight teams skip the opening national round, making elite ranking position a major regular-season prize.</p>
-</div>
-<div class="bullet-card">
-<strong>Campus playoff games</strong>
-<p>Higher seeds host the first two national rounds, turning résumé strength into real home-field advantage.</p>
-</div>
-<div class="bullet-card">
-<strong>A fixed bracket</strong>
-<p>No reseeding. Teams and fans know the complete route to the championship as soon as the field is announced.</p>
-</div>
-<div class="bullet-card">
-<strong>Geography matters early</strong>
-<p>Placement limits unnecessary travel when possible without overriding the integrity of the national seed line.</p>
-</div>
-<div class="bullet-card">
-<strong>New Year's Day quarterfinals</strong>
-<p>The final eight teams take over the sport's traditional holiday in four national showcase games.</p>
-</div>
-<div class="bullet-card">
-<strong>A Saturday night championship</strong>
-<p>The season concludes on a predictable weekend stage rather than drifting deeper into January.</p>
-</div>
+<span class="number">07 — The national bracket</span>
+<h2>Reward the best regular seasons without removing the danger.</h2>
+<p>All 24 playoff teams are seeded using the objective rankings. Better regular-season performance provides meaningful advantages throughout the bracket.</p>
+<div class="grid">
+<div class="card"><h3>Eight first-round byes</h3><p>The top eight seeds skip the opening round, making elite ranking position a major prize.</p></div>
+<div class="card"><h3>Campus playoff games</h3><p>Higher seeds host the first two national rounds, turning ranking position into real home-field advantage.</p></div>
+<div class="card"><h3>Fixed bracket</h3><p>No reseeding. Teams and fans know the route to the championship as soon as the field is announced.</p></div>
+<div class="card"><h3>Geography matters</h3><p>Early-round placement limits unnecessary travel where practical without overriding national seeding.</p></div>
+<div class="card"><h3>New Year's Day quarterfinals</h3><p>The final eight teams take over the sport's traditional postseason holiday.</p></div>
+<div class="card"><h3>Saturday night championship</h3><p>The season ends on a predictable weekend stage rather than drifting further into January.</p></div>
 </div>
 </section>
+
 <section class="section" id="calendar">
-<div class="section-heading">
-<div class="section-number">08</div>
-<div>
-<p class="section-kicker">The full 20-week season</p>
-<h2>A clear calendar from the opening weekend through the national title</h2>
-<p class="section-intro">Every part of the proposal has a defined place: open dates, four Challenge windows, conference play, Group of Six championships, Play-In Weekend and five weeks of national playoff football.</p>
-</div>
-</div>
-<div class="postseason-flow">
-<div class="flow-row">
-<span>Week 1</span>
-<div><strong>National open week</strong><p>Every team may take an early bye or play a regularly scheduled nonconference game.</p></div>
-</div>
-<div class="flow-row">
-<span>Week 2 · Labor Day</span>
-<div><strong>Big Ten–SEC Challenge Weekend</strong><p>The flagship Challenge fills Labor Day weekend. Other conferences are open, with room for Group of Six Challenge events.</p></div>
-</div>
-<div class="flow-row">
-<span>Week 3</span>
-<div><strong>ACC–Big 12 Challenge</strong><p>The second annual flagship Challenge takes center stage while Big Ten and SEC teams play Group of Six opponents.</p></div>
-</div>
-<div class="flow-row">
-<span>Week 4</span>
-<div><strong>Rotating cross-conference Challenges</strong><p>In 2026: Big Ten–Big 12 and SEC–ACC. In 2027: Big Ten–ACC and SEC–Big 12.</p></div>
-</div>
-<div class="flow-row">
-<span>Week 5</span>
-<div><strong>Second open week</strong><p>Major-conference teams can use a bye or final scheduled nonconference date. Group of Six conferences begin league play.</p></div>
-</div>
-<div class="flow-row">
-<span>Weeks 6–14</span>
-<div><strong>Conference season</strong><p>Major conferences play eight league games with one bye across nine weeks. Group of Six conferences stage championship games in Week 14.</p></div>
-</div>
-<div class="flow-row">
-<span>Week 15</span>
-<div><strong>CFB Challenge Play-In Weekend</strong><p>Major-conference cross-division qualification games fill the weekend. The six Group of Six champions play three games, sending three winners to the playoff.</p></div>
-</div>
-<div class="flow-row">
-<span>Week 16</span>
-<div><strong>National first round</strong><p>Seeds 9–24 begin the bracket in eight campus games hosted by the higher seeds.</p></div>
-</div>
-<div class="flow-row">
-<span>Week 17</span>
-<div><strong>National second round</strong><p>The top eight seeds enter and host the winners from the opening round.</p></div>
-</div>
-<div class="flow-row">
-<span>Week 18 · New Year's Day</span>
-<div><strong>National quarterfinals</strong><p>Four games preserve New Year's Day as college football's signature postseason destination.</p></div>
-</div>
-<div class="flow-row">
-<span>Week 19</span>
-<div><strong>National semifinals</strong><p>The four surviving teams advance without an unnecessary multiweek layoff.</p></div>
-</div>
-<div class="flow-row">
-<span>Week 20</span>
-<div><strong>National championship</strong><p>The season ends with a Saturday night title game and a champion that survived a transparent path.</p></div>
-</div>
+<span class="number">08 — The 20-week season</span>
+<h2>A national calendar built around meaningful games.</h2>
+<div class="timeline">
+<div class="week"><strong>Week 1</strong><div><b>National open week</b><p>Teams may take an early bye or play a scheduled nonconference game.</p></div></div>
+<div class="week"><strong>Week 2 · Labor Day</strong><div><b>Big Ten–SEC Challenge</b><p>The flagship Challenge takes center stage with 16 head-to-head matchups.</p></div></div>
+<div class="week"><strong>Week 3</strong><div><b>ACC–Big 12 Challenge</b><p>The second annual flagship Challenge, with Big Ten and SEC teams playing Group of Six opponents.</p></div></div>
+<div class="week"><strong>Week 4</strong><div><b>Rotating Challenges</b><p>2026: Big Ten–Big 12 and SEC–ACC. 2027: Big Ten–ACC and SEC–Big 12.</p></div></div>
+<div class="week"><strong>Week 5</strong><div><b>Second open week</b><p>A bye or final nonconference date for major-conference teams. Group of Six league play begins.</p></div></div>
+<div class="week"><strong>Weeks 6–14</strong><div><b>Conference season</b><p>Eight major-conference games and one bye across nine weeks. Group of Six championships in Week 14.</p></div></div>
+<div class="week"><strong>Week 15</strong><div><b>Play-In Weekend</b><p>Major-conference cross-division qualification games and three Group of Six qualification games.</p></div></div>
+<div class="week"><strong>Week 16</strong><div><b>National first round</b><p>Seeds 9–24 compete in eight campus games.</p></div></div>
+<div class="week"><strong>Week 17</strong><div><b>National second round</b><p>The top eight seeds enter and host the opening-round winners.</p></div></div>
+<div class="week"><strong>Week 18 · New Year's Day</strong><div><b>Quarterfinals</b><p>Four national showcase games.</p></div></div>
+<div class="week"><strong>Week 19</strong><div><b>Semifinals</b><p>Four teams compete for two championship spots.</p></div></div>
+<div class="week"><strong>Week 20</strong><div><b>National championship</b><p>A Saturday night title game concludes the season.</p></div></div>
 </div>
 </section>
-<section class="section closing" id="why-it-works">
-<div class="section-heading">
-<div class="section-number">09</div>
-<div>
-<p class="section-kicker">The complete system</p>
+
+<section class="section highlight">
+<span class="number">09 — The complete vision</span>
 <h2>Meaningful games are not extra inventory. They are the product.</h2>
-<p class="section-intro">The CFB Challenge starts with the 24-team playoff era and makes sure the regular season retains its stakes. It ties the demand for premium games to what is best for the sport: current blockbuster matchups, restored conference races, objective rankings and a postseason in which 17 teams earn access by winning on the field.</p>
-</div>
-</div>
-<div class="button-row">
-<a class="button button-dark" href="draft-explainer.html">Explore the Flagship Challenge</a>
-<a class="button button-light" href="draft.html">Build a Big Ten–SEC Slate</a>
-<a class="button button-light" href="results.html">Preview Challenge Results</a></div>
+<p>The CFB Challenge embraces a larger playoff while protecting what makes college football special: great rivalries, blockbuster games, conference pride and a regular season in which winning has real consequences.</p>
+<p>Conference Challenges create premium matchups. Divisions create meaningful races. Objective rankings reward ambitious schedules. Play-In games determine most playoff qualifiers on the field.</p>
+<h3>Better schedules. Meaningful conference competition. A stronger postseason.</h3>
+<a class="btn" href="draft-explainer.html">Behind the Challenge Draft</a>
+<a class="btn" href="draft.html">Build Your Challenge</a>
+<a class="btn" href="rankings-explainer.html">Explore the Rankings</a>
 </section>
+
 </main>
 <footer>
-    CFB Challenge — Better schedules. Meaningful conference competition. A stronger postseason.
-  </footer>
+CFB Challenge — Better schedules. Meaningful conference competition. A stronger postseason.
+</footer>
 </body>
 </html>
