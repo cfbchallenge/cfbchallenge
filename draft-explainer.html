@@ -1,451 +1,132 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Behind the Big Ten–SEC Challenge Draft | CFB Challenge</title>
-<meta content="Go behind the curtain of the Big Ten–SEC Challenge Draft: a spring television event that creates 16 meaningful Challenge Weekend games and real postseason stakes." name="description"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Behind the Draft | CFB Challenge</title>
+<meta name="description" content="Explore the Big Ten–SEC Challenge Draft, the Commissioners' Classic, Challenge Weekend and the postseason stakes.">
 <style>
-    :root{
-      --navy:#0d1b2a;
-      --navy2:#163d87;
-      --blue:#1d4ed8;
-      --red:#b91c1c;
-      --gold:#d6a84b;
-      --ink:#17202a;
-      --muted:#667085;
-      --line:#d9e0e8;
-      --paper:#ffffff;
-      --wash:#f3f6fa;
-      --soft:#f8fafc;
-      --soft-gold:#fff7df;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:var(--wash);
-      color:var(--ink);
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.6;
-    }
-    a{color:inherit}
-    .site-header{
-      background:var(--navy);
-      color:#fff;
-      border-bottom:4px solid var(--gold);
-    }
-    .nav{
-      width:min(1180px,calc(100% - 32px));
-      margin:0 auto;
-      min-height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-    .brand{
-      text-decoration:none;
-      font-weight:900;
-      letter-spacing:.03em;
-      font-size:20px;
-    }
-    .brand span{color:var(--gold)}
-    .nav-links{
-      display:flex;
-      gap:20px;
-      align-items:center;
-      font-size:14px;
-      font-weight:800;
-    }
-    .nav-links a{text-decoration:none}
-    .nav-cta{
-      padding:10px 14px;
-      border-radius:9px;
-      background:#fff;
-      color:var(--navy);
-    }
-    .hero{
-      padding:82px 0 74px;
-      color:#fff;
-      background:
-        linear-gradient(115deg,rgba(13,27,42,.98),rgba(22,61,135,.93)),
-        radial-gradient(circle at 80% 20%,rgba(214,168,75,.35),transparent 32%);
-    }
-    .hero-inner{
-      width:min(1180px,calc(100% - 32px));
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);
-      gap:48px;
-      align-items:center;
-    }
-    .eyebrow{
-      margin:0 0 16px;
-      color:#f4d68b;
-      font-size:13px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.11em;
-    }
-    h1{
-      margin:0 0 18px;
-      max-width:850px;
-      font-size:clamp(42px,6vw,70px);
-      line-height:1.03;
-      letter-spacing:-.035em;
-    }
-    .hero-copy{
-      margin:0;
-      max-width:780px;
-      color:#e8edf5;
-      font-size:20px;
-      line-height:1.55;
-    }
-    .hero-stat{
-      padding:28px;
-      border:1px solid rgba(255,255,255,.23);
-      border-radius:18px;
-      background:rgba(255,255,255,.08);
-      backdrop-filter:blur(5px);
-    }
-    .hero-stat strong{
-      display:block;
-      font-size:62px;
-      line-height:1;
-    }
-    .hero-stat span{
-      display:block;
-      margin-top:9px;
-      color:#f4d68b;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-    main{
-      width:min(1180px,calc(100% - 32px));
-      margin:0 auto;
-      padding:46px 0 70px;
-    }
-    .lead-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-      margin-bottom:24px;
-    }
-    .card,.section{
-      background:var(--paper);
-      border:1px solid var(--line);
-      border-radius:20px;
-      box-shadow:0 4px 18px rgba(16,24,40,.04);
-    }
-    .card{padding:30px}
-    .section{
-      margin-top:24px;
-      padding:38px;
-    }
-    .section-kicker{
-      margin:0 0 10px!important;
-      color:var(--blue);
-      font-size:13px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-    }
-    h2{
-      margin:0 0 12px;
-      font-size:30px;
-      line-height:1.18;
-      letter-spacing:-.02em;
-    }
-    p{margin:0 0 16px}
-    p:last-child{margin-bottom:0}
-    .draft-flow{
-      margin-top:25px;
-      display:grid;
-      gap:14px;
-    }
-    .draft-row{
-      display:grid;
-      grid-template-columns:100px 195px 1fr;
-      gap:20px;
-      align-items:center;
-      padding:19px 22px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:var(--soft);
-    }
-    .draft-row.big-ten{border-left:6px solid var(--blue)}
-    .draft-row.sec{border-left:6px solid var(--red)}
-    .draft-row .pick{
-      color:var(--muted);
-      font-size:13px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-    .draft-row .conference{
-      font-size:18px;
-      font-weight:900;
-    }
-    .draft-note{
-      margin-top:17px;
-      padding:18px 20px;
-      border:1px solid #efdca7;
-      border-radius:12px;
-      background:var(--soft-gold);
-      font-weight:700;
-    }
-    .timeline{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:14px;
-      margin-top:24px;
-    }
-    .timeline-card,.inventory-card{
-      padding:21px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:var(--soft);
-    }
-    .timeline-card span{
-      display:block;
-      margin-bottom:8px;
-      color:var(--blue);
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-    .timeline-card strong,.inventory-card strong{
-      display:block;
-      margin-bottom:8px;
-      font-size:21px;
-      line-height:1.25;
-    }
-    .timeline-card p,.inventory-card p{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.45;
-    }
-    .inventory-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
-      margin-top:23px;
-    }
-    .stakes{
-      color:#fff;
-      border:0;
-      background:linear-gradient(135deg,var(--navy),var(--navy2));
-    }
-    .stakes .section-kicker{color:#f4d68b}
-    .stakes p{color:#e7edf6}
-    .stakes-box{
-      margin-top:24px;
-      padding:24px;
-      border:1px solid rgba(255,255,255,.2);
-      border-radius:15px;
-      background:rgba(255,255,255,.08);
-    }
-    .stakes-box strong{
-      display:block;
-      margin-bottom:7px;
-      font-size:25px;
-    }
-    .cta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:26px;
-    }
-    .button{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:12px 18px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:900;
-    }
-    .button-primary{background:var(--gold);color:var(--navy)}
-    .button-secondary{background:#fff;color:var(--navy)}
-    .closing{
-      text-align:center;
-      padding:45px 34px;
-    }
-    .closing h2{
-      max-width:900px;
-      margin:0 auto 16px;
-      font-size:36px;
-    }
-    .closing p{
-      max-width:850px;
-      margin:0 auto;
-      color:var(--muted);
-      font-size:18px;
-    }
-    footer{
-      padding:30px 16px;
-      background:var(--navy);
-      color:#cbd5e1;
-      text-align:center;
-      font-size:13px;
-    }
-    @media(max-width:900px){
-      .hero-inner,.lead-grid{grid-template-columns:1fr}
-      .timeline{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .inventory-grid{grid-template-columns:1fr}
-      .hero-stat{max-width:420px}
-    }
-    @media(max-width:650px){
-      .nav-links a:not(.nav-cta){display:none}
-      .hero{padding:60px 0 54px}
-      .hero-copy{font-size:18px}
-      main{padding-top:24px}
-      .card,.section{padding:24px}
-      .timeline{grid-template-columns:1fr}
-      .draft-row{
-        grid-template-columns:1fr;
-        gap:5px;
-      }
-      .closing h2{font-size:30px}
-    }
-  </style>
-<style id="cfb-cross-page-links">
-.cfb-page-links{
-  margin:24px 0 0;
-  padding:22px;
-  border:1px solid var(--line,#d9e0e8);
-  border-radius:16px;
-  background:var(--soft,#f8fafc);
+:root{--navy:#0d1b2a;--blue:#163d87;--gold:#d6a84b;--ink:#17202a;--line:#dce3eb}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f3f6fa;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+a{color:var(--blue)}
+.wrap{width:min(1100px,calc(100% - 36px));margin:auto}
+.cfb-site-header{background:var(--navy);border-bottom:4px solid var(--gold)}
+.cfb-nav{width:min(1180px,calc(100% - 32px));min-height:110px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.cfb-brand{display:flex;align-items:center;flex-shrink:0}
+.cfb-nav-logo{height:96px;width:auto;max-width:110px;object-fit:contain}
+.cfb-nav-links{display:flex;align-items:center;gap:clamp(9px,1.5vw,22px);flex-wrap:wrap}
+.cfb-nav-links a{font-size:13px;font-weight:800;color:white;text-decoration:none;white-space:nowrap}
+.cfb-nav-links a:hover{text-decoration:underline}
+.cfb-nav-links .cfb-nav-cta{padding:10px 12px;border-radius:9px;background:white;color:var(--navy)}
+.hero{padding:76px 0;background:linear-gradient(115deg,#0d1b2a,#163d87);color:white}
+.eyebrow{color:#f4d68b;text-transform:uppercase;letter-spacing:.12em;font-size:13px;font-weight:900}
+.hero h1{font-size:clamp(39px,6vw,65px);line-height:1.07;letter-spacing:-.035em;max-width:950px;margin:12px 0 22px}
+.hero p{max-width:850px;font-size:19px;color:#e4eaf5}
+.hero strong{color:#f4d68b}
+.hero-stat{display:inline-block;margin-top:18px;border:1px solid #ffffff44;background:#ffffff12;border-radius:13px;padding:17px 24px;font-weight:800}
+.hero-stat strong{font-size:35px;margin-right:9px}
+main{padding:40px 0 75px}
+.section{background:white;border:1px solid var(--line);border-radius:18px;padding:clamp(24px,4vw,40px);margin-bottom:22px}
+.section h2{font-size:clamp(26px,3.4vw,35px);line-height:1.2;color:var(--navy);margin:0 0 16px}
+.section h3{font-size:20px;color:var(--navy);margin:0 0 10px}
+.section p{color:#4b5563;margin:0 0 16px}
+.section p:last-child{margin-bottom:0}
+.kicker{display:block;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:20px 0}
+.card{border:1px solid var(--line);background:#f8fafc;border-radius:14px;padding:23px}
+.card p{font-size:15px;margin:0}
+.draft-row{display:grid;grid-template-columns:135px 165px 1fr;gap:15px;align-items:center;background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:17px 20px;margin:11px 0}
+.draft-row.big-ten{border-left:6px solid #1d4ed8}
+.draft-row.sec{border-left:6px solid #b91c1c}
+.draft-row .pick{color:#667085;font-size:12px;font-weight:900;text-transform:uppercase}
+.draft-row .conference{font-size:18px;font-weight:900}
+.callout{background:#fff7df;border:1px solid #efdca7;border-radius:13px;padding:20px;margin:20px 0;color:var(--navy);font-weight:700}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:20px}
+.timeline-card{background:#f8fafc;border:1px solid var(--line);border-radius:13px;padding:20px}
+.timeline-card span{display:block;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.timeline-card strong{display:block;font-size:19px;color:var(--navy);margin-bottom:8px}
+.timeline-card p{font-size:14px;margin:0}
+.highlight{background:linear-gradient(130deg,#0d1b2a,#163d87);color:white}
+.highlight h2,.highlight h3{color:white}
+.highlight p{color:#e0e7f2}
+.highlight .kicker{color:#f4d68b}
+.highlight .callout{background:#ffffff12;border-color:#ffffff44;color:white}
+.btn{display:inline-block;background:var(--gold);color:var(--navy);padding:13px 19px;border-radius:10px;text-decoration:none;font-weight:900;margin:6px 9px 5px 0}
+.btn.dark{background:var(--navy);color:white}
+.btn.white{background:white;color:var(--navy)}
+footer{background:var(--navy);color:#cbd5e1;text-align:center;padding:28px 16px;font-size:13px}
+@media(max-width:760px){
+.grid{grid-template-columns:1fr}
+.timeline{grid-template-columns:repeat(2,1fr)}
+.draft-row{grid-template-columns:1fr;gap:5px}
+.cfb-nav{min-height:85px;gap:8px}
+.cfb-nav-logo{height:70px;max-width:75px}
+.cfb-nav-links{gap:8px;justify-content:flex-end}
+.cfb-nav-links a{font-size:11px}
+.cfb-nav-links .cfb-nav-cta{padding:7px 8px}
 }
-.cfb-page-links h3{
-  margin:0 0 8px;
-  font-size:22px;
-  line-height:1.25;
-  letter-spacing:-.015em;
+@media(max-width:420px){
+.timeline{grid-template-columns:1fr}
+.cfb-nav-links a{font-size:10px}
+.cfb-nav-links{gap:6px}
 }
-.cfb-page-links p{
-  margin:0 0 14px;
-  color:var(--muted,#667085);
-}
-.cfb-page-link-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.cfb-page-link{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:44px;
-  padding:10px 15px;
-  border-radius:9px;
-  background:var(--navy,#0d1b2a);
-  color:#fff!important;
-  text-decoration:none;
-  font-weight:900;
-}
-.cfb-page-link.alt{
-  background:#fff;
-  color:var(--navy,#0d1b2a)!important;
-  border:1px solid var(--line,#d9e0e8);
-}
-</style>
-
-<meta content="five-page-linked-package-2026-07-24" name="cfb-site-build"/>
-<style id="cfb-nav-logo-style">
-  .cfb-brand,.brand{
-    display:inline-flex;
-    align-items:center;
-    flex:0 0 auto;
-    line-height:0;
-  }
-  .site-header .nav,.site-header .cfb-nav,.cfb-site-header .nav,.cfb-site-header .cfb-nav{
-    min-height:124px;
-  }
-  .cfb-nav-logo{
-    display:block;
-    width:auto;
-    height:112px;
-    max-width:124px;
-    object-fit:contain;
-  }
-  @media(max-width:650px){
-    .site-header .nav,.site-header .cfb-nav,.cfb-site-header .nav,.cfb-site-header .cfb-nav{
-      min-height:94px;
-    }
-    .cfb-nav-logo{height:84px;max-width:94px}
-  }
 </style>
 </head>
 <body>
-<header class="site-header cfb-site-header">
-<nav aria-label="Primary navigation" class="nav cfb-nav">
-<a aria-label="CFB Challenge home" class="brand cfb-brand" href="index.html"><img class="cfb-nav-logo" src="cfbchallenge-logo.png" alt="CFB Challenge"></a>
-<div class="nav-links cfb-nav-links">
+
+<header class="cfb-site-header">
+<nav class="cfb-nav" aria-label="Primary navigation">
+<a class="cfb-brand" href="index.html" aria-label="CFB Challenge home">
+<img class="cfb-nav-logo" src="cfbchallenge-logo.png" alt="CFB Challenge">
+</a>
+<div class="cfb-nav-links">
 <a href="proposal.html">Full Proposal</a>
+<a href="rankings-explainer.html">Rankings Explainer</a>
 <a href="draft-explainer.html">Behind the Draft</a>
-<a class="nav-cta cfb-nav-cta" href="draft.html">Draft Simulator</a>
+<a class="cfb-nav-cta" href="draft.html">Draft Simulator</a>
 <a href="results.html">Results</a>
 </div>
 </nav>
 </header>
+
 <section class="hero">
-<div class="hero-inner">
-<div>
-<p class="eyebrow">The flagship spring event of the CFB Challenge</p>
+<div class="wrap">
+<span class="eyebrow">The flagship spring event of the CFB Challenge</span>
 <h1>What if Selection Sunday and the NFL Draft had a college football offseason baby?</h1>
-<p class="hero-copy">
-<strong>That's the Big Ten–SEC Challenge Draft.</strong> Every spring, Big Ten and SEC commissioners build the premier non-conference schedule in college football during a nationally televised draft featuring every participating head coach and a returning star player.
-        </p>
+<p><strong>That's the Big Ten–SEC Challenge Draft.</strong> Every spring, the commissioners build the premier nonconference schedule in college football during a nationally televised event featuring head coaches and returning star players.</p>
+<div class="hero-stat"><strong>16</strong> Challenge matchups created live</div>
 </div>
-<div class="hero-stat">
-<strong>16</strong>
-<span>Challenge matchups created live</span>
+</section>
+
+<main class="wrap">
+
+<section class="section">
+<span class="kicker">Challenge Draft Day</span>
+<h2>A schedule reveal, selection show and joint media day.</h2>
+<p>Shortly after spring practice concludes, every participating Big Ten and SEC school sends its head coach and one returning star player to Challenge Draft Day.</p>
+<p>As each matchup is announced, both schools take the stage for photographs, interviews and national television coverage. Commissioner strategy becomes part of the show, and every selection immediately creates a season's worth of storylines.</p>
+<div class="grid">
+<div class="card">
+<h3>Premium spring television</h3>
+<p>One major offseason event generates national interest when the college football calendar is otherwise relatively quiet.</p>
+</div>
+<div class="card">
+<h3>Sixteen fall showcases</h3>
+<p>One live draft creates an entire holiday weekend of marquee football, with meaningful postseason consequences.</p>
 </div>
 </div>
 </section>
-<main>
-<div class="lead-grid">
-<article class="card">
-<p class="section-kicker">Challenge Draft Day</p>
-<h2>A schedule reveal, selection show and joint media day</h2>
-<p>
-          Shortly after spring practice concludes, every participating Big Ten and SEC school sends its head coach and one returning star player to <strong>Challenge Draft Day</strong>.
-        </p>
-<p>
-          As each Big Ten–SEC Challenge matchup is announced, both schools take the stage for photographs, interviews and national television coverage. Commissioner strategy becomes part of the show, and every selection immediately creates a season's worth of storylines.
-        </p>
-</article>
-<article class="card">
-<p class="section-kicker">Premium spring inventory</p>
-<h2>A major college football event when the calendar needs one</h2>
-<p>
-          National Signing Day has become less dramatic, and spring games no longer command the same attention. The CFB Challenge fills that opening with fresh, live college football inventory during one of the quietest periods of the sports year.
-        </p>
-<p>
-          One made-for-television spring event creates sixteen more during Challenge Weekend—and the games carry real postseason weight.
-        </p>
-</article>
-</div>
+
 <section class="section" id="behind-the-draft">
-<p class="section-kicker">Behind the Draft</p>
-<h2>How the Big Ten–SEC Challenge is built</h2>
-<p>
-        Before the draft begins, each conference designates its <strong>Standard Bearer</strong>. Those programs are paired in the <strong>SEC/B1G Commissioners' Classic</strong>, the featured matchup of Challenge Weekend, played on Labor Day night.
-      </p>
-<p>
-        The <strong>SEC/B1G Commissioners' Classic</strong> is the showcase event of Challenge Weekend. It always features each conference's chosen Standard Bearer and the weekend's premier matchup. If the Challenge finishes <strong>8–8</strong>, the winner of the <strong>SEC/B1G Commissioners' Classic</strong> is awarded the <strong>Challenge Championship</strong> as the official tiebreaker. Otherwise, it remains the biggest non-conference game of the opening weekend—a game worthy of the national spotlight regardless of the standings.
-      </p>
-<p>
-        With the SEC/B1G Commissioners' Classic established, the commissioners draft the remaining fifteen matchups.
-      </p>
-<div class="draft-flow">
+<span class="kicker">Behind the Draft</span>
+<h2>How the Big Ten–SEC Challenge is built.</h2>
+<p>Before the draft begins, each conference designates its <strong>Standard Bearer</strong>. Those programs are paired in the <strong>SEC/B1G Commissioners' Classic</strong>, the featured matchup of Challenge Weekend, played on Labor Day night.</p>
+<p>The Commissioners' Classic is the showcase event regardless of the conference standings. If the Challenge finishes <strong>8–8</strong>, its winner also claims the Challenge Championship as the official tiebreaker.</p>
+<p>With the Classic established, commissioners draft the remaining fifteen matchups.</p>
+
 <div class="draft-row big-ten">
 <div class="pick">Selection 1</div>
 <div class="conference">Big Ten</div>
@@ -459,7 +140,7 @@
 <div class="draft-row big-ten">
 <div class="pick">Selections 3–7</div>
 <div class="conference">Alternating</div>
-<div>The Big Ten and SEC continue alternating selections through the first seven drafted matchups.</div>
+<div>The commissioners alternate through the first seven drafted matchups.</div>
 </div>
 <div class="draft-row sec">
 <div class="pick">Selections 8 &amp; 9</div>
@@ -469,114 +150,100 @@
 <div class="draft-row big-ten">
 <div class="pick">Selections 10–15</div>
 <div class="conference">Alternating</div>
-<div>The conferences alternate the remaining selections until every Big Ten–SEC Challenge matchup is assigned.</div>
+<div>The conferences alternate the remaining selections until all fifteen drafted matchups are assigned.</div>
 </div>
-</div>
-<div class="draft-note">
-        The selecting conference controls the home team and the matchup attached to that home date. Each commissioner must balance conference wins, television value, national interest, rivalry potential, geography and the risk of creating an obvious mismatch.
-      </div>
+
+<div class="callout">The selecting conference controls the home team and the matchup attached to that home date. Each commissioner must balance conference victories, television appeal, rivalry potential, geography and competitive risk.</div>
+
+<a class="btn dark" href="draft.html">Try the Draft Simulator</a>
 </section>
+
 <section class="section">
-<p class="section-kicker">Challenge Weekend</p>
-<h2>The crown jewel of the non-conference schedule</h2>
-<p>
-        Every Big Ten–SEC Challenge game is played during <strong>Challenge Weekend</strong>, spanning Friday through Labor Day Monday. Together, the sixteen games create one unmistakable national event instead of scattering marquee non-conference matchups across unrelated weeks.
-      </p>
+<span class="kicker">Challenge Weekend</span>
+<h2>The crown jewel of the nonconference schedule.</h2>
+<p>Every Big Ten–SEC Challenge game takes place between Friday and Labor Day Monday. Rather than scattering marquee matchups across unrelated weeks, sixteen games become one unmistakable national event.</p>
+
 <div class="timeline">
 <div class="timeline-card">
 <span>Friday</span>
-<strong>Opening night</strong>
-<p>The CFB Challenge begins with a standalone national window and immediate conference stakes.</p>
+<strong>Opening Night</strong>
+<p>A standalone national window kicks off the Challenge.</p>
 </div>
 <div class="timeline-card">
 <span>Saturday</span>
-<strong>Full national slate</strong>
-<p>Big Ten–SEC Challenge games fill the major broadcast windows from noon through prime time.</p>
+<strong>Full National Slate</strong>
+<p>Games fill major broadcast windows from noon through prime time.</p>
 </div>
 <div class="timeline-card">
 <span>Sunday</span>
-<strong>Standalone showcases</strong>
-<p>Premium matchups receive national attention without competing against a full Saturday board.</p>
+<strong>Standalone Showcases</strong>
+<p>Premium matchups receive attention without competing against a full Saturday slate.</p>
 </div>
 <div class="timeline-card">
 <span>Monday</span>
 <strong>Commissioners' Classic</strong>
-<p>The SEC/B1G Commissioners' Classic closes Challenge Weekend on Labor Day night.</p>
+<p>The flagship matchup closes Challenge Weekend on Labor Day night.</p>
 </div>
 </div>
 </section>
+
 <section class="section">
-<p class="section-kicker">Why the format works</p>
-<h2>The matchups reflect the teams and storylines that exist now</h2>
-<p>
-        Traditional non-conference games are often scheduled so far in advance that the programs, coaches and national storylines have changed by kickoff. The Big Ten–SEC Challenge responds to the current landscape.
-      </p>
-<div class="inventory-grid">
-<div class="inventory-card">
-<strong>Better television</strong>
-<p>Commissioners must build a slate with enough national brands, competitive games and fresh matchups to carry an entire holiday weekend.</p>
+<span class="kicker">Why the format works</span>
+<h2>Build matchups around today's college football.</h2>
+<p>Traditional nonconference games are often scheduled so far in advance that coaches, rosters and national storylines have changed dramatically by kickoff.</p>
+<p>A spring draft reflects the programs and players fans will actually see that fall.</p>
+<div class="grid">
+<div class="card">
+<h3>Better Television</h3>
+<p>Commissioners assemble a slate with national brands, competitive matchups and fresh rivalries across an entire holiday weekend.</p>
 </div>
-<div class="inventory-card">
-<strong>Visible strategy</strong>
-<p>Every selection reveals priorities. Fans can see which programs were protected, challenged, targeted or avoided.</p>
+<div class="card">
+<h3>Visible Strategy</h3>
+<p>Fans can see which teams are protected, challenged, targeted or avoided with every selection.</p>
 </div>
-<div class="inventory-card">
-<strong>Games that matter</strong>
-<p>Every result contributes to the Challenge standings, the Challenge Champion and a meaningful postseason reward.</p>
+<div class="card">
+<h3>Meaningful Results</h3>
+<p>Every game contributes to the Challenge standings, the Challenge Championship and postseason opportunities.</p>
 </div>
+<div class="card">
+<h3>Stronger Scheduling Incentives</h3>
+<p>Under the proposed rankings framework, winning major nonconference games produces significant rewards, while competitive losses can still earn credit.</p>
 </div>
-</section>
-<section class="section stakes" id="stakes">
-<p class="section-kicker">The postseason stakes</p>
-<h2>The Challenge has real consequences</h2>
-<p>
-        Under the <strong>CFB Challenge</strong> postseason model, the winning conference receives an additional automatic berth in the <strong>CFB Challenge Play-In Weekend</strong>.
-      </p>
-<p>
-        That means every game can affect the national championship path. A road upset by a middle-tier program can matter just as much to the final standings as a heavyweight matchup in prime time.
-      </p>
-<div class="stakes-box">
-<strong>Conference-wide success creates conference-wide opportunity.</strong>
-        The extra automatic bid rewards the league that performs best across the full Big Ten–SEC Challenge, giving every participating program a reason to care about every result.
-      </div>
-<div class="cta-row">
-<a class="button button-primary" href="proposal.html">View the CFB Challenge Outline</a>
-<a class="button button-secondary" href="draft.html">Try the Draft Simulator</a>
 </div>
 </section>
+
+<section class="section highlight" id="stakes">
+<span class="kicker">The postseason stakes</span>
+<h2>The Challenge has real consequences.</h2>
+<p>Under the CFB Challenge postseason proposal, the winning conference receives <strong>five automatic Play-In berths</strong>, while the losing conference receives four.</p>
+<p>That means a road upset by a middle-tier program can matter just as much to the Challenge standings as a heavyweight matchup in prime time.</p>
+<div class="callout">Conference-wide success creates conference-wide opportunity. Every participating program has a reason to care about every result.</div>
+<p>The individual games also contribute to each team's objective national ranking, making ambitious scheduling more rewarding than simply protecting an undefeated record.</p>
+<a class="btn" href="proposal.html">Read the Full Proposal</a>
+<a class="btn white" href="rankings-explainer.html">Explore the Rankings</a>
+</section>
+
 <section class="section">
-<p class="section-kicker">The membership imbalance</p>
+<span class="kicker">The membership imbalance</span>
 <h2>What about the other two Big Ten teams?</h2>
-<p>
-        Because the Big Ten currently has two more members than the SEC, two Big Ten programs each season will not be assigned a Big Ten–SEC Challenge matchup.
-      </p>
-<p>
-        Those schools instead host <strong>regional Group of Five opponents</strong> during Challenge Weekend. These games do not count toward the official Big Ten–SEC Challenge standings but complete each institution's Labor Day weekend schedule.
-      </p>
-<p>
-        To ensure no institution is financially disadvantaged by the conference-size imbalance, the <strong>Big Ten Conference funds the game guarantee</strong> for each participating Group of Five opponent.
-      </p>
+<p>Because the Big Ten has two more members than the SEC, two Big Ten programs each season will not receive a Big Ten–SEC Challenge matchup.</p>
+<p>Those schools instead host regional Group of Five opponents during Challenge Weekend. These games do not count toward the official Big Ten–SEC Challenge standings, but complete each institution's Labor Day weekend schedule.</p>
+<p>To avoid financially disadvantaging those programs, the <strong>Big Ten Conference funds the game guarantee</strong> for each participating Group of Five opponent.</p>
 </section>
-<section class="section closing">
-<p class="section-kicker">The flagship of the CFB Challenge</p>
-<h2>The draft creates the games. Challenge Weekend shapes the postseason.</h2>
-<p>
-        The Big Ten–SEC Challenge is the flagship event of the CFB Challenge—a system designed to create better schedules, meaningful non-conference competition and a more compelling path to the national championship. It begins with Challenge Draft Day, culminates in the SEC/B1G Commissioners' Classic and rewards the conference that earns the Challenge Championship on the field.
-      </p>
-</section>
+
 <section class="section">
-<div class="cfb-page-links">
-<h3>Ready to build the Challenge yourself?</h3>
-<p>Step into the commissioner seat, create the Big Ten–SEC Challenge and then see how Challenge Weekend plays out.</p>
-<div class="cfb-page-link-row">
-<a class="cfb-page-link" href="draft.html">Launch the Draft Simulator</a>
-<a class="cfb-page-link alt" href="results.html">View the Results Experience</a>
-<a class="cfb-page-link alt" href="proposal.html">Read the Full Proposal</a></div>
-</div>
+<span class="kicker">The flagship of the CFB Challenge</span>
+<h2>The draft creates the games. Challenge Weekend shapes the postseason.</h2>
+<p>The Big Ten–SEC Challenge creates better schedules, meaningful nonconference competition and a more compelling path to the national championship.</p>
+<p>It begins with Challenge Draft Day, culminates in the SEC/B1G Commissioners' Classic and rewards the conference that earns the Challenge Championship on the field.</p>
+<a class="btn" href="draft.html">Launch the Draft Simulator</a>
+<a class="btn dark" href="results.html">View Results</a>
 </section>
+
 </main>
+
 <footer>
-    CFB Challenge — Better schedules. Meaningful conference competition. A stronger postseason.
-  </footer>
+CFB Challenge — Better schedules. Meaningful conference competition. A stronger postseason.
+</footer>
 </body>
 </html>
