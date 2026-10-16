@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rankings Explainer | CFB Challenge</title>
+<meta name="description" content="How the CFB Challenge would replace playoff selection committees with transparent, cumulative, opponent-adjusted rankings that reward winning and ambitious scheduling.">
+<style>
+:root{--navy:#0d1b2a;--blue:#163d87;--gold:#d6a84b;--ink:#17202a;--muted:#596579}
+*{box-sizing:border-box}
+body{margin:0;background:#f3f6fa;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+a{color:var(--blue)}
+.hero{background:linear-gradient(115deg,#0d1b2a,#163d87);color:white;padding:72px 20px}
+.wrap{max-width:1060px;margin:auto}
+.eyebrow{color:#f4d68b;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:900}
+.hero h1{font-size:clamp(40px,6vw,68px);line-height:1.08;letter-spacing:-.035em;max-width:900px;margin:12px 0 22px}
+.hero p{max-width:850px;font-size:19px;color:#e4eaf5}
+.hero strong{color:#f4d68b}
+.content{max-width:1060px;margin:42px auto 80px;padding:0 20px}
+.section{background:#fff;border:1px solid #dce3eb;border-radius:18px;padding:clamp(24px,4vw,42px);margin:20px 0}
+.section h2{font-size:clamp(25px,3.3vw,34px);line-height:1.2;margin:0 0 14px;color:var(--navy)}
+.section p{font-size:16px;color:#4b5563;margin:0 0 16px}
+.section p:last-child{margin-bottom:0}
+.pill{display:inline-block;color:#163d87;font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.factor{border:1px solid #dce3eb;border-radius:14px;padding:22px;background:#f8fafc}
+.factor h3{margin:0 0 8px;font-size:20px;color:var(--navy)}
+.factor p{margin:0;font-size:15px}
+.emphasis{background:#fff7df;border-color:#efdca7}
+.callout{font-size:21px!important;font-weight:800;color:#0d1b2a!important}
+.cta{display:inline-block;background:var(--gold);color:#0d1b2a;padding:13px 20px;border-radius:10px;font-weight:900;text-decoration:none;margin:6px 10px 0 0}
+.cta.secondary{background:#0d1b2a;color:white}
+footer{background:#0d1b2a;color:#cbd5e1;text-align:center;padding:28px 16px;font-size:13px}
+.cfb-site-header{background:#0d1b2a;color:white;border-bottom:4px solid #d6a84b}
+.cfb-nav{width:min(1180px,calc(100% - 32px));min-height:110px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.cfb-brand{display:flex;align-items:center;flex-shrink:0}
+.cfb-nav-logo{display:block;height:96px;width:auto;max-width:110px;object-fit:contain}
+.cfb-nav-links{display:flex;align-items:center;gap:clamp(9px,1.5vw,22px);flex-wrap:wrap}
+.cfb-nav-links a{font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:800;color:white;text-decoration:none;white-space:nowrap}
+.cfb-nav-links a:hover{text-decoration:underline}
+.cfb-nav-links .cfb-nav-cta{padding:10px 12px;border-radius:9px;background:white;color:#0d1b2a!important}
+@media(max-width:760px){
+.grid{grid-template-columns:1fr}
+.hero{padding:50px 20px}
+.cfb-nav{min-height:85px;gap:8px}
+.cfb-nav-logo{height:70px;max-width:75px}
+.cfb-nav-links{gap:8px;justify-content:flex-end}
+.cfb-nav-links a{font-size:11px!important;display:inline-block!important}
+.cfb-nav-links .cfb-nav-cta{padding:7px 8px}
+}
+@media(max-width:420px){
+.cfb-nav-links a{font-size:10px!important}
+.cfb-nav-links{gap:6px}
+}
+</style>
+</head>
+<body>
+<header class="cfb-site-header">
+<nav class="cfb-nav" aria-label="Primary navigation">
+<a class="cfb-brand" href="index.html" aria-label="CFB Challenge home">
+<img class="cfb-nav-logo" src="cfbchallenge-logo.png" alt="CFB Challenge">
+</a>
+<div class="cfb-nav-links">
+<a href="proposal.html">Full Proposal</a>
+<a href="rankings-explainer.html">Rankings Explainer</a>
+<a href="draft-explainer.html">Behind the Draft</a>
+<a class="cfb-nav-cta" href="draft.html">Draft Simulator</a>
+<a href="results.html">Results</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+<div class="wrap">
+<div class="eyebrow">The road to the college football playoff</div>
+<h1>Win games. Challenge yourself. Keep climbing.</h1>
+<p><strong>No committees. No eye tests. No incentive to avoid great opponents.</strong></p>
+<p>A transparent, season-long points system that rewards victories, recognizes how teams actually perform, and makes ambitious scheduling an opportunity instead of a liability.</p>
+</div>
+</section>
+
+<main class="content">
+<section class="section">
+<span class="pill">The central idea</span>
+<h2>Rankings are a climb, not a weekly reset.</h2>
+<p>Teams build a running point total from the opening weekend through the end of the regular season. Every game adds to a team's playoff résumé, and the accumulated standings determine who has earned a favorable seed.</p>
+<p>But the value of past performances isn't frozen. As opponents win or lose later in the year, the strength-of-opponent portion of earlier results is recalculated. A win against a team that turns out to be excellent becomes more valuable; a win against a team that fades loses some of its value.</p>
+<p><strong>Even on a bye week, your résumé can change.</strong> Your opponents keep playing—and what they do continues to affect the value of your games.</p>
+</section>
+
+<section class="section">
+<span class="pill">The incentive</span>
+<h2>Reward the risk of playing great teams.</h2>
+<p>Beating an elite opponent should launch a team up the standings. Playing that opponent well and losing should still count for something. A five-point loss at Ohio State can show more than a 28-point win over Rutgers, even though the victory remains valuable.</p>
+<p>A team isn't going to collect six quality losses and expect to reach the playoff. Winning generates the largest rewards. But one additional loss because a team chose a marquee matchup shouldn't derail its season.</p>
+<p class="callout">The upside of winning a huge game should far outweigh the downside of competing well and losing it.</p>
+</section>
+
+<section class="section">
+<span class="pill">The framework</span>
+<h2>Four ingredients. One published formula.</h2>
+<div class="grid">
+<div class="factor">
+<h3>Winning</h3>
+<p>Wins are the foundation of the point total. Defeating a quality opponent offers substantially more upside than beating an overmatched team.</p>
+</div>
+<div class="factor">
+<h3>Game location</h3>
+<p>Home games carry no additional location multiplier; neutral-site performances receive a proposed +0.25 and road performances +0.50. The exact application remains to be finalized.</p>
+</div>
+<div class="factor">
+<h3>Game control</h3>
+<p>Credit comes from the score throughout the game—not a subjective eye test or merely the final margin. Strong control can earn points even in defeat.</p>
+</div>
+<div class="factor">
+<h3>Strength of opponent</h3>
+<p>The one element informed by external power ratings. It adjusts how much each performance is worth and is recalculated as the season develops.</p>
+</div>
+</div>
+<p style="margin-top:18px">These are guiding principles, not a finalized scoring formula. Point values, multipliers, safeguards and calculations would be tested and published before implementation.</p>
+</section>
+
+<section class="section emphasis">
+<span class="pill">A living résumé</span>
+<h2>Last month's win is still earning—or losing—value.</h2>
+<p>Suppose Ole Miss earns early-season credit for games against Louisville and LSU. If those opponents subsequently lose, the opponent-strength value attached to those performances can decline. If they prove stronger than expected, that value can grow instead.</p>
+<p>That doesn't erase the result on the field. It means the system judges each game against the best available picture of the opponent's strength, not the perception surrounding that opponent on game day.</p>
+<p><strong>Who you played matters. How you played matters. And how good they turn out to be matters.</strong></p>
+</section>
+
+<section class="section">
+<span class="pill">The payoff</span>
+<h2>Let the standings—not a committee—decide.</h2>
+<p>Every team plays under the same published rules. Every result adds to the season-long total. Every opponent's later performances can affect the value of earlier games. No weekly committee deliberations, shifting explanations or brand-name advantages.</p>
+<p>At the end of the regular season, the rankings determine playoff seeding and the ranking-based berths within the broader CFB Challenge postseason structure. Conference results and on-field qualification still determine the automatic pathways outlined in the full proposal.</p>
+<p class="callout">Win games. Challenge yourself. Play well. Earn your ranking.</p>
+<a class="cta" href="proposal.html">Read the Full Proposal</a>
+<a class="cta secondary" href="draft.html">Try the Draft Simulator</a>
+</section>
+</main>
+
+<footer>CFB Challenge — Better schedules. Meaningful conference competition. A stronger postseason.</footer>
+</body>
+</html>
