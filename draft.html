@@ -229,19 +229,9 @@ header:not(.cfb-site-header) h1,.hero h1{letter-spacing:-.025em}
     .cfb-nav-logo{height:84px;max-width:94px}
   }
 </style>
-</head>
+<style id="cfb-unified-nav">.cfb-site-header{background:#0d1b2a;color:white;border-bottom:4px solid #d6a84b}.cfb-nav{width:min(1180px,calc(100% - 32px));min-height:110px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}.cfb-brand{display:flex;align-items:center;flex-shrink:0}.cfb-nav-logo{display:block;height:96px;width:auto;max-width:110px;object-fit:contain}.cfb-nav-links{display:flex;align-items:center;gap:clamp(9px,1.5vw,22px);flex-wrap:wrap}.cfb-nav-links a{font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:800;color:white;text-decoration:none;white-space:nowrap}.cfb-nav-links a:hover{text-decoration:underline}.cfb-nav-links .cfb-nav-cta{padding:10px 12px;border-radius:9px;background:white;color:#0d1b2a!important}@media(max-width:760px){.cfb-nav{min-height:85px;gap:8px}.cfb-nav-logo{height:70px;max-width:75px}.cfb-nav-links{gap:8px;justify-content:flex-end}.cfb-nav-links a{font-size:11px!important;display:inline-block!important}.cfb-nav-links .cfb-nav-cta{padding:7px 8px}}@media(max-width:420px){.cfb-nav-links a{font-size:10px!important}.cfb-nav-links{gap:6px}}</style></head>
 <body>
-<header class="site-header cfb-site-header">
-<nav aria-label="Primary navigation" class="nav cfb-nav">
-<a aria-label="CFB Challenge home" class="brand cfb-brand" href="index.html"><img class="cfb-nav-logo" src="cfbchallenge-logo.png" alt="CFB Challenge"></a>
-<div class="nav-links cfb-nav-links">
-<a href="proposal.html">Full Proposal</a>
-<a href="draft-explainer.html">Behind the Draft</a>
-<a class="nav-cta cfb-nav-cta" href="draft.html">Draft Simulator</a>
-<a href="results.html">Results</a>
-</div>
-</nav>
-</header>
+<header class="site-header cfb-site-header"><nav class="nav cfb-nav" aria-label="Primary navigation"><a class="brand cfb-brand" href="index.html" aria-label="CFB Challenge home"><img class="cfb-nav-logo" src="cfbchallenge-logo.png" alt="CFB Challenge"></a><div class="nav-links cfb-nav-links"><a href="proposal.html">Full Proposal</a><a href="rankings-explainer.html">Rankings Explainer</a><a href="draft-explainer.html">Behind the Draft</a><a class="nav-cta cfb-nav-cta" href="draft.html">Draft Simulator</a><a href="results.html">Results</a></div></nav></header>
 <header>
 <h1>Big Ten–SEC Challenge Draft Simulator</h1>
 <p>Choose a commissioner seat, name the Standard Bearers, build the Big Ten–SEC Challenge, then play Challenge Weekend.</p>
@@ -348,29 +338,30 @@ header:not(.cfb-site-header) h1,.hero h1{letter-spacing:-.025em}
 </aside>
 </div>
 <script>
-const HFA = 2.5;
-const SD = 16.0;
+const HFA = 2.0;
+const SPREAD_SCALE = 1.00; // Use the full 2026 SP+ rating difference.
+const SD = 14.0;
 const SIMS = 30000;
 
-// Team ratings = 80% current-season SP+ + 20% final prior-season SP+.
- // Both source ratings are measured in points above an average FBS team.
- // The blend feeds every spread, win probability, and draft evaluation.
+// Team ratings = 100% current 2026 SP+ (user-supplied snapshot).
+// Projected spreads use full rating differences plus 2-point home-field advantage.
+// These are model projections, not published sportsbook lines.
 const bigTen = [
-  {name:"Ohio State",r:29.62},{name:"Oregon",r:21.98},{name:"Indiana",r:27.84},
-  {name:"USC",r:14.9},{name:"Michigan",r:12.96},{name:"Penn State",r:11.3},
-  {name:"Washington",r:9.36},{name:"Iowa",r:14.34},{name:"Illinois",r:7.22},
-  {name:"Nebraska",r:14.76},{name:"Minnesota",r:2.62},{name:"Wisconsin",r:7.52},
-  {name:"UCLA",r:10.5},{name:"Maryland",r:-1.48},{name:"Northwestern",r:13.64},
-  {name:"Rutgers",r:-4.04},{name:"Michigan State",r:-1.64},{name:"Purdue",r:0.06}
+  {name:"Ohio State",r:29.5},{name:"Oregon",r:21.0},{name:"Indiana",r:26.7},
+  {name:"USC",r:14.4},{name:"Michigan",r:13.1},{name:"Penn State",r:9.6},
+  {name:"Washington",r:7.1},{name:"Iowa",r:13.0},{name:"Illinois",r:5.8},
+  {name:"Nebraska",r:16.9},{name:"Minnesota",r:2.9},{name:"Wisconsin",r:10.5},
+  {name:"UCLA",r:15.3},{name:"Maryland",r:-2.0},{name:"Northwestern",r:15.6},
+  {name:"Rutgers",r:-5.3},{name:"Michigan State",r:-1.2},{name:"Purdue",r:1.6}
 ];
 
 const sec = [
-  {name:"Texas",r:22.76},{name:"Georgia",r:27.46},{name:"Oklahoma",r:13.42},
-  {name:"Texas A&M",r:10.54},{name:"Ole Miss",r:17.52},{name:"LSU",r:19.42},
-  {name:"Alabama",r:21.36},{name:"Tennessee",r:16.36},{name:"Florida",r:9.5},
-  {name:"Missouri",r:17.28},{name:"Auburn",r:11.12},{name:"South Carolina",r:9.1},
-  {name:"Vanderbilt",r:5.02},{name:"Arkansas",r:-0.9},
-  {name:"Mississippi State",r:10.9},{name:"Kentucky",r:6.76}
+  {name:"Texas",r:24.4},{name:"Georgia",r:28.3},{name:"Oklahoma",r:12.2},
+  {name:"Texas A&M",r:8.0},{name:"Ole Miss",r:15.9},{name:"LSU",r:21.7},
+  {name:"Alabama",r:23.0},{name:"Tennessee",r:16.7},{name:"Florida",r:11.0},
+  {name:"Missouri",r:18.0},{name:"Auburn",r:11.0},{name:"South Carolina",r:9.9},
+  {name:"Vanderbilt",r:1.2},{name:"Arkansas",r:-2.4},
+  {name:"Mississippi State",r:12.6},{name:"Kentucky",r:8.0}
 ];
 
 // 15 draft picks. Big Ten champion game is at home.
@@ -393,11 +384,14 @@ function normalCDF(x){
   return x>=0?p:1-p;
 }
 function homeWinProb(home, away){
-  return normalCDF((home.r + HFA - away.r)/SD);
+  return normalCDF(projectedMargin(home,away)/SD);
+}
+function projectedMargin(home,away){
+  return (home.r-away.r)*SPREAD_SCALE + HFA;
 }
 function lineText(home,away){
-  const margin = home.r + HFA - away.r;
-  if(Math.abs(margin)<0.05) return "Pick'em";
+  const margin = Math.round(projectedMargin(home,away)*2)/2;
+  if(Math.abs(margin)<0.25) return "Pick'em";
   return margin>0 ? `${home.name} -${margin.toFixed(1)}` : `${away.name} -${Math.abs(margin).toFixed(1)}`;
 }
 function fillSelect(el,teams){
@@ -699,7 +693,7 @@ const locationScore = {
 };
 
 function spreadTVScore(home,away){
-  const margin=Math.abs((home.r+HFA)-away.r);
+  const margin=Math.abs(projectedMargin(home,away));
   // Elite TV window: pick'em through one score. After seven points, blowouts
   // are punished aggressively; a 30-point mismatch can carry a negative component.
   if(margin<=3) return 100;
